@@ -2,30 +2,11 @@
 
 This is written in Jtwig
 
-This README would normally document whatever steps are necessary to get your application up and running.
-
 ### What is this repository for? ###
 
-Web project for CC
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
-
-### How do I get set up? ###
-
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
+This project was to provide couples a way to meet other couples in a new city.
+This reposity was the front end code.
 
 ### Who do I talk to? ###
 
-* Repo owner or admin
-* Other community or team contact
+* Collectively written by Derek Gygax and Chris Fogarty
