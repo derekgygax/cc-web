@@ -1,0 +1,128 @@
+<link rel="stylesheet" href="/css/base/nav.css" />
+
+<div class="navbar-fixed">
+	<nav>
+		<div class="nav-wrapper row">
+			<a href="/"><div class="logo col s2">
+				<img src="/img/2CC_logo.png"  style="max-height:55px;"/>
+			</div></a>
+			
+			{% if homePartner %}
+			<div class="icon_links col s10">
+			<ul class="text_links left hide-on-med-and-down">
+			
+			{% if homeCouple != null or couple.coupleId != null %}
+				{% if homePartner.updatesNeeded %} 
+					{% if "/requirements" != webPageOn %}
+					<li><a href="/requirements">Complete Requirements</a></li>
+					{% endif %}
+				{% else %}
+					<li><a {% if "/profile" == webPageOn %}class="active"{% endif %} href="/profile">View your Couple</a></li>
+					
+					<li><a {% if "/recommended_couples" == webPageOn %}class="active"{% endif %} href="/recommended_couples">Browse Recommended Couples</a></li>
+			        <li><a {% if "/matches" == webPageOn %}class="active"{% endif %} href="/matches">View Matches</a></li>
+			        <li><a {% if "/chat" == webPageOn %}class="active"{% endif %} href="/chat">View Messages</a></li>
+		        {% endif %}
+			 {% else %}
+		        {% if homePartner %}
+			        {% if homePartner.updatesNeeded %} 
+			        	{% if "/requirements" != webPageOn %}
+						<li><a href="/requirements">Complete Requirements</a></li>
+						{% endif %}
+					{% else %}
+			 		<li><a {% if "/profile" == webPageOn %}class="active"{% endif %} href="/profile">View your Profile</a></li>
+			 		<li><a {% if "/couple_up" == webPageOn %}class="active"{% endif %} href="/couple_up">Create a Couple</a></li>
+			 		<li><a {% if "/profile/update" == webPageOn %}class="active"{% endif %} href="/profile/update">Update Profile</a></li>
+			 		{% endif %}
+			 	{% else %}
+			 		<li><a href="/">Create an Account</a></li>
+			 	{% endif %}
+		    {% endif %}
+		    
+		    
+		      </ul>
+				<ul class="right">
+						<li class="nav-welcome-msg hide-on-med-and-down">Welcome, {{ homePartner.firstName }}</li>		
+						<li><div class="nav-partner-circle active-profile" data-homepartnerid="{{ partner.partnerId }}">{{ homePartner.firstName|slice(0, 1) }}{{ homePartner.lastName|slice(0, 1) }}</div></li>
+					{% if homeCouple != null %}
+						<li><div class="nav-partner-circle" data-awaypartnerid="{{ partner.partnerId }}">{{ awayPartner.firstName|slice(0, 1) }}{{ awayPartner.lastName|slice(0, 1) }}</div></li>
+					{% endif %}
+					{% if homePartner.readyToMingle %}
+			        	<li><a class="{% if "/search" == webPageOn %}active {% endif %}modal-trigger" href="#searchModal"><i class="material-icons">search</i></a></li>
+			        	<li id="message_nav"><a {% if "/chat" == webPageOn %}class="active"{% endif %} href="/chat"><i class="material-icons">message</i></a></li>
+			    	{% endif %}
+						<li><a class="dropdown-trigger" data-target="profile_dropdown"><i class="helpAvatar material-icons">menu</i></a></li>
+			    </ul>
+		    </div>
+		    
+
+			{% else %}
+	  			<ul class="right">
+			        <li><a class="dropdown-trigger" data-target="profile_dropdown"><i class="helpAvatar material-icons">menu</i></a></li>
+			    	
+			    </ul>
+	  		{% endif %}
+	  		
+	  				    <!-- Profile Icon Dropdown -->
+	  				   
+		    <ul id="profile_dropdown" class="dropdown-content">
+		    	{% if homePartner %}
+		    	{% if homeCouple %}
+			    	<li><a href="/profile">View Couple</a></li>
+			    	<li><a href="/profile/update">Update Profile</a></li>
+			    	{% if homePartner.readyToMingle %}
+			    		<li><a href="/login-select">Switch Profiles</a></li>
+			    	{% endif %}
+		    	{% else %}
+		    	<li><a href="/profile">View Profile</a></li>
+		    	{% endif %}
+		    	{% if homePartner.readyToMingle %}
+		    	<li class="divider" tabindex="-1"></li>
+		    	<li><a href="/chat">Messages</a></li>
+		    	<li class="divider" tabindex="-1"></li>
+		    	{% else %}
+		    	<li class="divider" tabindex="-1"></li>
+		    	{% endif %}
+		    	<li><a class="modal-trigger" href="/help">Need Help?</a></li>
+		    	<li class="divider" tabindex="-1"></li>
+		    	<li><a href="/policies">Site Policies</a></li>
+		    	<li><a href="/logout">Logout</a></li>
+				{% else %}
+					<li><a href="/">Login</a></li>
+					<li><a href="/">Create Account</a></li>
+					<li class="divider" tabindex="-1"></li>
+					<li><a href="/help">Need Help?</a></li>
+					<li><a href="/policies">Site Policies</a></li>
+				{% endif %}
+				
+			   <li class="divider" tabindex="-1"></li> <!-- this must be there lol -->
+			</ul>
+		</div>
+	</nav>
+</div>
+
+<div id="searchModal" class="modal">
+    <div class="modal-title">Search for Couples</div>
+      <form id="searchForm">
+
+    <div class="modal-content row">
+		{% for param in searchParams %}
+			{% set isModal = true %}
+			{% include "search/param.twig.html" %}
+		{% endfor %}
+		
+    </div>
+    <div class="modal-action">
+    	<div class="left">
+     	<button type="submit" class="modal-close waves-effect waves btn light-blue">Search</button>
+    	</div>
+    	<div class="right">
+      	<a href="#!" class="modal-close waves-effect waves btn light-blue">Close</a>
+      	</div>
+    </div>
+    		</form>
+    
+  </div>
+  {% include 'index/contact.html' %}
+  <script src="/js/search.js"></script>
+  

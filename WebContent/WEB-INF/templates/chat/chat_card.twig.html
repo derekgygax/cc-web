@@ -1,0 +1,32 @@
+<div class="couple_chat z-depth-1" data-roomid="{{ roomId }}">
+	<div class="couple_chat_minimized">
+		<img class="couple_chat_avatar" src="/img/avatar.png" />
+		<span>{{ matchHigherName }} & {{ matchLowerName }}</span>
+		<div class="couple_chat_actions right close_chat_box">
+			<i class="material-icons">close</i>
+		</div>
+	</div>
+	<div class="couple_chat_maximized">
+		<form class="sendMessageForm">
+			<input type="hidden" name="roomid" value="{{ roomId }}">
+			<div class="couple_chat_no_history"></div>
+			<div class="couple_chat_textarea">
+				<div id="messages-{{ roomId }}" class="message_box"></div>
+				<div class="chat_action">
+					<input type="text" name="message" class="chat_message_input">
+					<button class="btn light-blue right" type="submit"><i class="material-icons">send</i></button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<script>
+document.getElementById("messages-{{ roomId }}").addEventListener("scroll", function(){
+	$(this).trigger("getOldMsgs", {
+		"roomId": "{{ roomId }}"
+	});
+});
+</script>
+
+
+

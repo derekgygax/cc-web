@@ -1,0 +1,41 @@
+{% extends "../base.twig.html" %}
+
+{% block content %}
+	{% include "header.html" %}
+<div class="row profile_actions_container">
+  	<ul class="profile_actions">
+  		{% include "../action_bar/back_to_profile.html" %}
+		{% include "../action_bar/update_couple.html" %}
+  		{% include "../action_bar/update_personality.html" %}
+  		{% include "../action_bar/upload_images.html" %}
+  	</ul>
+</div>
+
+<div id="sheet">
+
+  	<div class="sheet_content container">
+  	
+  	<div class="row recommended_view">
+  	
+
+  	<div class="col s12">
+  	<ul id="searchCard" class="collapsible">
+	    <li>
+	      <div class="collapsible-header">Search Parameters<i class="expand_more material-icons">expand_more</i></div>
+	      <div class="collapsible-body">
+	      {% include "search_params.html" %}
+	      </div>
+	    </li>
+    </ul>
+  	</div>
+	
+	
+	<div id="results">
+		{% include "search_results.html" %}
+	</div>
+	
+</div>
+</div>
+</div>
+
+{% endblock %}

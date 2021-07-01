@@ -1,0 +1,12 @@
+{% for question in categoricalQuestions %}
+	{% set choiceMade = homePartner[question.id] %}
+	{% if partnerRequirements.categoricalQuestions %}
+		{% if partnerRequirements.categoricalQuestions[question.id] %}
+			{% include "../../categorical_questions/categorical_question.twig.html" %}
+		{% else %}
+			<input type="hidden" name="{{question.id}}" value="{{choiceMade}}"/>
+		{% endif %}
+	{% else %}
+		<input type="hidden" name="{{question.id}}" value="{{choiceMade}}"/>
+	{% endif %}
+{% endfor %}

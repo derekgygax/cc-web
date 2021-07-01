@@ -1,0 +1,95 @@
+#tabs-swipe-demo {
+	display: none;
+}
+
+
+
+/* make another 100% screen height container */
+.carousel.carousel-slider {
+	height: 100% !important;
+}
+
+/* Swipeable Card Styling */
+.swipeable .card {
+	height: 100%;
+	border-radius: 0;
+}
+
+.swipeable .card-image {
+	height: 66%;
+	background-size: cover;
+}
+.swipeable .card-content {
+	height: 20%;
+	padding: 0;
+	padding-top: 8px;
+}
+
+.swipeable .card-action {
+	height: 14%;	
+	padding: 0;
+	width: 100%;
+	display: table;
+	border-top: none;
+}
+
+.swipeable .card-action div {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.swipeable .card-action div:first-child {
+	padding-left: 32px;
+}
+
+.swipeable .card-action div:nth-child(2) {
+	padding-right: 32px;
+}
+
+
+.swipeable .card-image {
+	border-bottom: 4px solid #42a5f5;
+	position: relative;
+	box-shadow: 0px 1px 2px #414141;
+}
+
+.swipeable .card-image img {
+}
+
+.swipeable .card-action a {
+	color: #fff !important;
+}
+
+
+
+/* Fancy border in the middle of image */
+.card-image-border {
+	position: absolute;
+	box-shadow: 0px 1px 2px #414141;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+    background: #42a5f5 !important;
+    padding: 8px;
+    font-size: 32px;
+    border-radius: 32px;
+    color: #fff;
+    margin-top: -22px;
+}
+
+/* Swipeable Card Title */
+.swipeable .test-name {
+	display: block;
+	font-size: 24px;
+    font-weight: 300;
+    text-align: center;
+}
+
+/* Swipeable Card Description */
+.swipeable .test-ages {
+	font-size: 16px;
+    font-weight: 300;
+    text-align: right;
+    display: block;
+    padding: 0 16px;
+}

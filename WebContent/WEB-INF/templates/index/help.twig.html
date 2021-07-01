@@ -1,0 +1,162 @@
+{% extends "../base.twig.html" %}
+
+{% block content %}
+	<header>
+	<div class="container">
+			<div class="row">
+							<div class="branding">
+					<div>2CouplesConnect</div>
+					<span>Real Friends, Real Fast</span>
+					<div class="social-media-icons">
+						<a href="https://www.facebook.com/2CouplesConnect-231260174216415/" target="_blank"><img src="/img/fb.png" alt="2CouplesConnect Facebook" /></a>
+						<a href="https://www.instagram.com/2couplesconnect/" target="_blank"><img src="/img/ig.png" alt="2CouplesConnect Instagram" /></a>
+					</div>
+				</div>
+			
+			<div class="header-index col s12 no-padding">
+			<div class="col s12 m12 l5">
+
+				<div class="card">
+				
+					<div class="card-title">
+						<i class="material-icons">question_answer</i>Need some help with our website?
+					</div>
+
+					<div class="card-content">
+						Below are some of the frequently asked questions about our website, 2COUPLESCONNECT. If you have a specific question, or concern please feel free to message us by using the contact form.	
+					
+					</div>
+					
+					<div class="card-action">
+						{% if homePartner is empty %}
+							<a class="btn light-blue" href="/">Login</a>
+							<a class="btn light-blue right" href="/">Create Account</a>
+						{% else %} 
+							<a class="btn light-blue" href="/profile">Back to your Profile</a>
+						{% endif %}
+						
+					</div>
+				</div>
+				
+			</div>
+
+			<!-- HEADER CARD -->
+			<div id="helpContactUs" class="col s12 m12 l6 push-xl1">
+				<div class="card">
+		<div class="card-title">
+			Contact Us
+		</div>
+		
+		<div class="card-content">
+			<form id="contactUsForm">
+				<div class="input-field col s12">
+		       		<input id="contactSubject" name="subject" type="text" class="validate">
+		       		<label for="contactSubject">Please enter a subject</label>
+		       		<span class="active helper-text" data-error="" data-success=""></span>
+		     	</div>
+				<div class="input-field col s12">
+		       		<input id="contactSenderEmailAddress" name="emailAddress" type="text" class="validate">
+		       		<label for="contactSenderEmailAddress">What's your email address?</label>
+		       		<span class="active helper-text" data-error="" data-success=""></span>
+		     	</div>
+		     	<div class="input-field col s12">
+		          <textarea id="contactMessage" name="contactMessage" class="materialize-textarea"></textarea>
+		          <label for="contactMessage">Please enter your message below:</label>
+		        </div>
+		</div>
+		
+		<div class="card-actions" style="padding: 16px">
+			<button type="submit" class="submitContactMessage btn light-blue modal-close">Contact Us</a>
+		</form>
+				
+		</div>
+	</div>
+			</div>
+			</div>
+			
+			</div>
+	</div>
+	</header>
+	
+	<div id="sheet">
+	<div class="sheet_content container no-padding">
+		
+ <ul id="helpQuestions" class="collapsible">
+   <li>
+     <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>What is 2CouplesConnect?</div>
+     <div class="collapsible-body">
+     2CouplesConnect is a website and soon Android and IOS app created to help couples find other nearby couples to enjoy in person, double-dates, come over, and do things with. 
+Potential users of our website include the following. You have just moved to a new area and want to make new friends.  Or you, or your partner, is pregnant and need to find some new friends who can relate to the life change and would do activities you want to do. Even when you have children and want to find friends you and your partner can hang out with, that won't mind having kids in the house, or even have kids of their own as potential playmates! 
+<p>Generally, use 2CouplesConnect when you want to expand/redirect your social circle.</p>
+<p>It's super easy too! Just sign up for an account and enter our minimal information (age, gender, 5 essential questions) and your SO will do the same. Couple up with each other, and complete your couple profile (upload a photo, tell us how long you've been together, if you have kids and your general location). After that, we'll inform you (match) similar nearby couples, so when you are ready -- start chatting and connecting! 
+Answer more questions and spend less time searching by getting better automated recommendations, allowing for more time to chat, and more quickly meet your new couple friends.</p>
+     </div>
+   </li>
+   <li>
+     <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Is 2CouplesConnect free?</div>
+     <div class="collapsible-body">Yes! 2CouplesConnect is completely free sign-up. We do plan to add premium tiered memberships in the future, that will have exclusive benefits. </div>
+   </li>
+   <li>
+     <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Why do I have to make a separate account from my partner if we are going to be joined anyways?</div>
+     <div class="collapsible-body">Well, we kept in mind that sometimes life happens, and your partner may no longer be your partner later. People break-up or divorce, and maybe later want to use the site. We wanted to make this already hard life change easier to handle on 2CouplesConnect. By having separate profiles, you can un-couple with your partner, and then you could recouple with another person and only have to redo some of your information.</div>
+   </li>
+   <li>
+     <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Can I use 2CouplesConnect if I'm not in a relationship?</div>
+     <div class="collapsible-body">Unfortunately, you can't. We allow you to create an account but after filling out your basic information and the five essential survey questions, we require you to couple up with your partner before you can do anything else. So, if you don't have someone to couple up with, you won't be able to browse other couples or use any features. </div>
+   </li>
+   <li>
+     <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Is 2CouplesConnect available everywhere?</div>
+     <div class="collapsible-body">Yes. All you need is a stable internet connection! Please keep your web browser full screen at 100% zoom for the best visual experience!</div>
+   </li>
+   <li>
+     <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>How old do I have to be to use 2CouplesConnect?</div>
+     <div class="collapsible-body">Users must be at least 18 years old to use our service. Younger people will have to wait, and we have the right to, and will terminate your account.</div>
+   </li>
+   <li>
+     <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>What is 2CouplesConnect premium?</div>
+     <div class="collapsible-body">It's coming soon! We aren't ready to release it yet but keep an eye out for it in the near future. </div>
+   </li>
+   <li>
+     <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>How do I create a 2CouplesConnect account?</div>
+     <div class="collapsible-body">First, welcome to 2CouplesConnect! We are glad to help you on your quest for the perfect couple friends. 
+     <p>To sign up for an account just look over to the "create an account" box on our home page and fill out the form (email, first name, last name, password). After that, fill out our basic requirements which will be presented to you as soon as you create a log in and verify your email. With age and gender, just five essential survey questions, you can couple up (your partner will have to do the same steps as outlined). Then fill out your couple profile: upload a photo, let us know about how long you have been dating, if you both have kids or not, what kind of relationship are you both in (dating, married, etc.), allow location, write a "story" for other couples to see and start looking through your recommended couples!</p></div>
+   </li>
+   <li>
+     <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>How do I edit my profile?</div>
+     <div class="collapsible-body">On your couple page there is a little tab called update my info on the left. Click on that and update any incorrect information or add more information! If you want to update your couple profile, simply click on the tab right next to update profile called "update our info" and do your editing there. </div>
+   </li>
+    <li>
+     <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>I want better matches/ I want to change my answer to my survey questions.</div>
+     <div class="collapsible-body">Just go to update survey and answer as many questions as you can! Remember, the more you answer the better your matches will be.</div>
+   </li>
+    <li>
+     <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>How do I search?</div>
+     <div class="collapsible-body">After completing the requirements, a magnify glass will appear on the top right that you can click to define and search for other couples. Don't forget, we also do the hard work for you so if you desire you can just browse recommended couples instead!</div>
+   </li>
+    <li>
+     <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>How do I message another couple?</div>
+     <div class="collapsible-body">To message another couple both you and your partner will have to approve on that couple. Once you both approve you will be allowed to send a message to the other couple. But keep in mind, for receiving couple, both partners need to agree to reply, before they are able to send a response. </div>
+   </li>
+    <li>
+     <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>I accidently approved a couple I don't like/ I changed my mind! How do I fix this?</div>
+     <div class="collapsible-body">Don't worry! Its easy. Go to your approved couples and simply change your vote from approve to disapprove. If you accidently declined a couple you like you can just go to declined couples tab and approve them there.</div>
+   </li>
+    <li>
+     <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>How do I report someone?</div>
+     <div class="collapsible-body">This feature is coming soon but you can just contact us and let us know by <a href="#contact" class="modal-trigger">clicking this link</a> or by emailing support@2CouplesConnect.com</div>
+   </li>
+    <li>
+     <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>How do I delete my account?</div>
+     <div class="collapsible-body">This feature is coming soon but you can just contact us and let us know by <a href="#contact" class="modal-trigger">clicking this link</a> or by emailing support@2CouplesConnect.com</div>
+   </li>
+ </ul>
+		
+		
+	</div>
+			
+</div>
+
+<!-- This is a silly way so we can ask the users off the very beginning to let us use their location -->
+<script src="js/createAccount.js"></script>
+
+{% endblock %}

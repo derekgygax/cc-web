@@ -1,0 +1,108 @@
+<header>
+	<div class="container">
+		<div class="row">
+			<div class="col s12 m12 l4">
+				<div class="header-partner-profile">
+					<div class="header-partner-img">
+					{% set img = {'large': '/cc-web/img/avatar.png'} %}
+					{% if homeCouple != null %}
+						{% set img = homeCouple.profilePictures[0] %}
+					{% endif %}	
+						<img id="profilePic" style="background-image: url({{img.large}}); 
+				   		 {% if homeCouple.coupleId != couple.coupleId %}
+				   		 	
+				   		 {% endif %}
+						"> <!--  end img -->
+						{% if homeCouple != null and homeCouple.coupleId == couple.coupleId %}
+						<a class="modal-trigger addProfilePicture btn-floating btn-large waves-effect waves-light light-blue" href="#upload_profile_pic"><i class="material-icons">add_a_photo</i></a>
+						{% endif %}
+					</div>
+				
+				    <div class="header-partner-name">
+				    	{% if userInCouple == true %}
+				    		{{ homePartner.firstName }} & {{ awayPartner.firstName }}
+				    	{% else %}
+				    		{{ homePartner.firstName }} {{ homePartner.lastName }}
+				    	{% endif %}
+				    </div>
+				    
+				    <div class="header-stats">
+				    	{% if homeCouple != null %}
+						<a href="/cc-web/recommended_couples" class="header-stat col s4">
+							<div>
+								<i class="material-icons">recent_actors</i>
+							</div>
+							<span>browse couples</span>
+						</a>
+						{% else %}
+						<a href="/cc-web/profile/update" class="header-stat col s4">
+							<div>
+								<i class="material-icons">edit</i>
+							</div>
+							<span>update profile</span>
+						</a>
+						{% endif %}
+						{% if homeCouple != null %}
+						<a href="/cc-web/matches" class="header-stat col s4">
+							<div>
+								<i class="material-icons">group_add</i>
+							</div>
+							<span>matches</span>
+						</a>
+						{% else %}
+						<a href="/cc-web/couple_up" class="header-stat col s4">
+							<div>
+								<i class="material-icons">group_add</i>
+							</div>
+							<span>couple up</span>
+						{% endif %}
+						{% if homeCouple != null %}
+						<a href="/cc-web/chat" class="header-stat col s4">
+							<div>
+								<i class="material-icons">message</i>
+							</div>
+							<span>messages</span>
+						</a>
+						{% else %}
+						<a href="/cc-web/survey" class="header-stat col s4">
+							<div>
+								<i class="material-icons">portrait</i>
+							</div>
+							<span>take survey</span>
+						</a>
+						{% endif %}
+				    </div>
+
+				    
+				</div>
+				
+			</div>
+			
+			<!-- HEADER CONTENT--> 
+			<div class="col s12 m12 l8">
+			
+				<div class="header-content hide-on-med-and-down">
+					<h1>Let's find some couples for you, {{homePartner.firstName}} and {{awayPartner.firstName}}</h1>
+				</div>
+			
+			</div>
+			
+			<!-- HEADER CARD -->
+			<div class="col s12 m12 l4 push-l2">
+				<div class="card">
+					<div class="card-title">
+						Search for Couples!
+					</div>
+					<div class="card-content">
+						<p>
+						Specify any of the parameters you want below to find the couples right for you and your partner!
+						</p>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		
+	</div>
+	
+</header>

@@ -1,0 +1,76 @@
+{% if couple %}
+	{% set partnerHigher = couple.partners[couple.partnerIdHigher] %}
+	{% set partnerLower = couple.partners[couple.partnerIdLower] %}
+	
+<div class="card recommended_couple_card recommended_couple_small recommeneded_couple_{{view}}"
+	data-coupleid="{{couple.coupleId}}"
+	data-higherPartnerId="{{couple.partnerIdHigher}}"
+	data-lowerPartnerId="{{couple.partnerIdLower}}"
+	data-higherPartnerFirstName="{{partnerHigher.firstName}}"
+	data-lowerPartnerFirstName="{{partnerLower.firstName}}">
+
+	
+		<a href="#"><div class="recommended_couple_header" style="background-image: url('/cc-web/img/photo2.jpg')">
+			
+			<a href="#" class="couple_vert_menu dropdown-trigger valign-wrapper" data-target="couple_block_{{loop.index}}">
+				<i class="material-icons">more_vert</i>
+			</a>
+			
+			<!-- Profile Icon Dropdown -->
+		    <ul id="couple_block_{{loop.index}}" class="dropdown-content">
+		   		<li><a>Skip Couple</a></li>
+		   		<li class="divider" tabindex="-1"></li>
+			    <li><a data-coupleId="{{ couple.coupleId }}" class="block_couple">Block Couple</a></li>
+			    <li><a>Report Couple</a></li>
+			</ul>
+			
+			{% if recommenedCouple.partnerApprove == "approve" %}
+			<div class="recommended_couple_avatars tooltipped" data-position="right" data-tooltip="{{awayPartner.firstName}} liked this couple">
+				<i class="recommended_couple_border material-icons">plus_one</i>
+			</div>  
+			{% endif %}
+		</div>
+		
+		<div class="recommended_couple_info">
+			<div class="row">
+				
+				<div class="col s12">
+					<span class="card-title">{{partnerHigher.firstName}} & {{partnerLower.firstName}}</span>
+				</div>
+				<div class="col s12 right-align">
+					<span class="left recommended_couple_timeTogether card-title hide-on-med-and-down">{{couple.timeTogether}} together</span>
+					<span class="right recommended_couple_age card-title">ages {{partnerHigher.age}} & {{partnerLower.age}}</span>				
+				</div>
+			
+				
+			</div>
+
+		</div></a>
+		
+		<div class="card-action">
+			<input type="hidden" id="nextRecommenedCouple" data-coupleid="{{nextRecommenedCouple}}">
+			<input type="hidden" id="recommendedPartnerApprove" data-partnerApprove="{{recommenedCouple.partnerApprove}}">
+			
+		<div>
+			{% if recommenedCouple.approve == 'approve' %}
+				<a class="btn recommended_approve light-blue" href="#" data-value="none"><span>Unapprove</span></a>
+			{% else %}
+			<a class="btn recommended_approve light-blue" href="#" data-value="approve"><span>Approve</span></a>
+			{% endif %}
+		</div>
+		<div>
+			{% if recommenedCouple.approve == 'decline' %}
+				{% if coupleMismatch == 1 %}
+					<a class="btn recommended_approve light-blue" href="#" data-value="decline"><span>Decline</span></a>
+				{% else %}
+					<a class="btn recommended_approve light-blue" href="#" data-value="none"><span>Reset</span></a>
+				{% endif %}
+			{% else %}
+				<a class="btn recommended_approve light-blue" href="#" data-value="decline"><span>Decline</span></a>
+			{% endif %}
+		</div>
+		</div>
+
+</div>
+
+{% endif %}

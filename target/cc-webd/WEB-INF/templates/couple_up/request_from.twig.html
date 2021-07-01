@@ -1,0 +1,28 @@
+<div class="coupleUpFormWrapper">
+	<form class="coupleUpForm">
+				<div class="card">
+					<div class="card_title">
+						<span>Active Couple Invitations</span>
+						<i class="material-icons">group_add</i>
+					</div>
+					<div class="card-content valign-wrapper">
+						<img src="/cc-web/img/avatar.png" width="64px" height="64px" />
+									<span class="requestFromTitle">
+									{% if length(request.firstName) != null and length(request.lastName) != null %}
+										{{ request.firstName }} {{ request.lastName }}
+									{% else %}
+										{{ request.emailAddress }}
+									{% endif %}
+									</span>
+				    </div>
+				    <div class="card-action">
+				    	<div class="right-align">
+					    	<input type="hidden" name="partnerId" value="{{ request.partnerId }}"/>
+					    	<input type="hidden" class="submitForm" name="action" value="" />
+					    	<button type="button" id="approveCoupleUpBtn" class="submitCoupleUp btn light-blue" value="accept">Couple Up!</button>
+					    	<button type="button" class="submitCoupleUp btn light-blue" value="decline">Decline</button>
+					    </div>
+				    </div>
+			    </div>
+	</form>
+</div>

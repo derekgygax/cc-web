@@ -1,0 +1,27 @@
+{% set searchSelected = "" %}
+	
+	<div class="input-field">
+		<!-- The show_select class below is because materialize hides selects by default -->
+		<select name="{{ param.id }}" data-paramid="{{ param.id }}">
+			<option value="" disabled>Choose One</option>
+			{% if parameters %}
+			{% set value = parameters[param.id] %}
+			
+			{% for option in param.values %}
+
+						<option value="{{ option }}" {% if option == value %} selected {% endif %}>{{ option }}</option>
+
+			{% endfor %}
+			
+			{% else %}
+				{% for option in param.values %}
+
+						<option value="{{ option }}" {% if option == value %} selected {% endif %}>{{ option }}</option>
+
+				{% endfor %}
+			{% endif %}
+		</select>
+					<label>{{ param.title }}</label>
+		
+	</div>
+	

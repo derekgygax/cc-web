@@ -1,0 +1,88 @@
+  <div id="update_partner_modal" class="modal">
+    <div class="modal-content">
+      <h4 class="center-align">Update Profile</h4>
+      
+<form id="updatePartnerForm" method="POST">
+	<div id="partnerInfo" class="textCenter">
+		<div class="row">
+			<div class="input-field col s12">
+				<input id="firstName" name="firstName" type="text" required="required" value="{{ partner.firstName }}" required>
+				<label class="inputRequired">First Name:</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s12">
+				<label>Middle Name:</label>
+				<input id="middleName" name="middleName" type="text" value="{{ partner.middleName }}">
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s12">
+				<label class="inputRequired">Last Name:</label>
+				<input id="lastName" name="lastName" type="text" required="required" value="{{ partner.lastName }}">
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s12">
+				<label class="inputRequired">Age:</label>
+				<input id="age" name="age" type="text" required="required" value="{{ partner.age }}">
+				<span id="failAge">The Age must be a number</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s12">
+				<label>Phone Number:</label>
+				<input id="phoneNumber" name="phoneNumber" type="text" value="{{ partner.phoneNumber }}">
+				<span id="failPhoneNumber">The Phone Number must be a number</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s12">
+				<label>Address: </label>
+				<input id="address" name="address" type="text" value="{{ partner.address }}">
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s12">
+				<label>City: </label>
+				<input id="city" name="city" type="text" value="{{ partner.city }}">
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s12">
+				<!-- The show_select class below is because materialize hides selects by default -->
+				<select id="state" name="state">
+					<option> Select State</option>
+					{% for state, abrv in unitedStates %}
+					<option value="{{ abrv }}" 
+					{% if (partner.state == abrv) %}
+					selected
+					{% endif %}
+					>{{state}}</option>
+					{% endfor %}
+				</select>
+				<label>State: </label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s12">
+				<label class="inputRequired">Zip Code:</label>
+				<input id="zipcode" name="zipcode" type="text" required="required" value="{{ partner.zipcode }}">
+				<span id="failZipcode">The Zip Code must be a number</span>
+			</div>
+		</div>
+		{% for question in categoricalQuestions %}
+			{% set choiceMade = partner[question.id] %}
+			{% include "../categorical_questions/categorical_question.twig.html" %}
+		{% endfor %}
+	</div>
+	<div class="col s12 center-align">
+	<input type="submit" class="modal-close btn col s12 light-blue" value="Update Profile" />
+	</div>
+</form>
+<script src="js/updatePartner.js"></script>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+  </div>

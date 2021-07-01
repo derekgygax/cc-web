@@ -1,0 +1,12 @@
+main {
+	height: 100%;
+	padding-bottom: 56px;
+}
+
+main .card {
+	margin: 0;
+}
+
+main .card-content {
+	background: #fff;
+}

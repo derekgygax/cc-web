@@ -1,0 +1,81 @@
+{% extends "../base.twig.html" %}
+
+{% block content %}
+
+{% set partners = couple.partners %}
+
+<header class="fullPageHeader">
+<div id="selectPartnerProfile" style="margin:0 auto;">
+	<div class="card">
+		<div class="card-title">
+			Select your Profile
+		</div>
+		
+		<div class="card-content">
+			
+			<div class="login-partners-list">
+				{% set partner = homePartner %}
+					{% include "login-select-partner.html" %}
+				{% set partner = awayPartner %}
+					{% include "login-select-partner.html" %}
+					
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div id="createPartnerProfile" style="margin:0 auto;display:none;">
+	<div class="card">
+		<form id="updatePartnerForm" method="POST" data-partnerid="{{ awayPartner.partnerId }}">
+			<div class="card-title">
+				Add Login
+			</div>
+			<div class="card-content">
+	   	    	<div class="row">
+	  	    			<div class="input-field col s12">
+						<input id="emailAddress" name="emailAddress" type="text" value="{{ awayPartner.emailAddress }}">
+						<label>Email Address:</label>
+					</div>
+	   	    	
+	   	    		<div class="input-field col s12 m12 l6">
+						<input id="firstName" class="updatePartnerfirstName" name="firstName" type="text" value="{{ awayPartner.firstName }}">
+						<label class="inputRequired">First Name:</label>
+						<span class="active helper-text" data-error=""></span>
+					</div>
+	
+					<div class="input-field col s12 m12 l6">
+						<input id="lastName" class="updatePartnerlastName" name="lastName" type="text" value="{{ awayPartner.lastName }}">
+						<label class="inputRequired">Last Name:</label>
+						<span class="active helper-text" data-error=""></span>
+					</div>
+					
+				     <div class="input-field col s6">
+				       <input id="password" name="password" type="password" class="validate">
+				       <label for="password">Password</label>
+				       <span class="active helper-text" data-error="" data-success=""></span>
+				       
+				     </div>
+				     <div class="input-field col s6">
+				       <input id="passwordConfirm" type="password" class="validate">
+				       <label for="passwordConfirm">Confirm Password</label>
+				     </div>
+				     
+	   	    	</div>
+			</div>
+			
+			<div class="card-actions" style="padding: 16px; text-align: center;">
+				<button type="submit" class="btn light-blue">Create Profile</a>		
+				<button id="toggleSelectLoginProfile" class="btn light-blue right">Cancel</a>			
+			</div>
+		
+		</form>
+	</div>
+</div>
+
+ </header>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.js"></script>
+ <script src="/js/updatePartner.js"></script>
+{% endblock %}
+          
+          

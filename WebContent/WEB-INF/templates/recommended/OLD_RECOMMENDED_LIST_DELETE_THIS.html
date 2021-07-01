@@ -1,0 +1,133 @@
+				<ul class="tabs z-depth-1" style="margin-bottom: 24px;">
+			        <li class="tab col s3"><a class="active" href="#allCouples">Recommended Couples</a></li>
+			        <li class="tab col s3"><a href="#partnerApprovedCouples">{{awayPartner.firstName}} Approved</a></li>
+			        <li class="tab col s3"><a href="#approvedCouples">You Approved</a></li>
+			        <li class="tab col s3"><a href="#declinedCouples">You Declined</a></li>
+			    </ul>
+			    <div id="allCouples">
+			    	{% set coupleCount = 0 %}	
+			    
+					{% for recommenedCouple in allRecommendedMatches %}
+						{% if recommenedCouple.approve == 'none' %}
+						{% set coupleCount = coupleCount + 1 %}				
+						{% set couple = recommenedCouple.couple %}
+						<div class="waldo col s12 m12 l4">
+						{% include "couple.twig.html" %}
+						</div>
+						{% endif %}
+					{% endfor %}
+
+					<div class="no-more-couples-view-global" style="display: none; height: 100%; margin: 0 auto;">
+							<div style="display: table-cell; vertical-align: middle;">
+							<div class=" no-more-couples card" style="width:85%; height: 60%; margin: 0 auto;">
+								<div class="card-title">
+									No More Couples!
+								</div>
+								<div class="card-content">
+									It looks like you are all out of recommended couples to browse through. Why don't you
+									check back in later for some more?
+								</div>
+								<div class="card-action">
+									<a class="btn light-blue" href="/profile">Back to Profile</a>
+								</div>
+							</div>
+							</div>
+					</div>
+			    </div>
+			    
+			    <div id="partnerApprovedCouples">
+			    {% set coupleCount = 0 %}	
+			    
+			    {% for recommenedCouple in allRecommendedMatches %}
+					
+					
+						{% if recommenedCouple.partnerApprove == 'approve' and (recommenedCouple.approve == 'none' or recommenedCouple.approve == 'decline') %}
+							{% set coupleCount = coupleCount + 1 %}			
+							{% set coupleMismatch = 0 %}	
+							{% if recommenedCouple.approve == 'decline' %}
+								{% set coupleMismatch = 1 %}
+							{% endif %}
+							{% set couple = recommenedCouple.couple %}
+							{% if couple.coupleId != homeCouple.coupleId %}
+							<div class="waldo col s12 m12 l4">
+							{% include "couple.twig.html" %}
+							</div>
+							{% endif %}
+						{% endif %}
+
+				{% endfor %}
+
+					<div class="no-more-couples-view-global" style="display: none; height: 100%; margin: 0 auto;">
+							<div style="display: table-cell; vertical-align: middle;">
+							<div class=" no-more-couples card" style="width:85%; height: 60%; margin: 0 auto;">
+								<div class="card-title">
+									No More Couples!
+								</div>
+								<div class="card-content">
+									It looks like you are all out of recommended couples to browse through. Why don't you
+									check back in later for some more?
+								</div>
+								<div class="card-action">
+									<a class="btn light-blue" href="/profile">Back to Profile</a>
+								</div>
+							</div>
+							</div>
+					</div>
+			    </div>
+			    <div id="approvedCouples">
+			    {% for recommenedCouple in allRecommendedMatches %}
+					
+						{% if recommenedCouple.approve == 'approve' %}
+							{% set couple = recommenedCouple.couple %}
+							{% if couple.coupleId != homeCouple.coupleId %}
+							<div class="waldo col s12 m12 l4">
+							{% include "couple.twig.html" %}
+							</div>
+							{% endif %}
+						{% endif %}
+				{% endfor %}
+				<div class="no-more-couples-view-global" style="display: none; height: 100%; margin: 0 auto;">
+							<div style="display: table-cell; vertical-align: middle;">
+							<div class=" no-more-couples card" style="width:85%; height: 60%; margin: 0 auto;">
+								<div class="card-title">
+									No Approved Couples!
+								</div>
+								<div class="card-content">
+									It looks like you haven't approved any couples yet, why don't you browse through your recommended list and try and match some!
+								</div>
+								<div class="card-action">
+									<a class="btn light-blue" href="/profile">Back to Profile</a>
+								</div>
+							</div>
+							</div>
+					</div>
+			    </div>
+			    <div id="declinedCouples">
+			    			    {% for recommenedCouple in allRecommendedMatches %}
+					
+						{% if recommenedCouple.approve == 'decline' %}
+							{% set couple = recommenedCouple.couple %}
+							{% if couple.coupleId != homeCouple.coupleId %}
+							<div class="waldo col s12 m12 l4">
+							{% include "couple.twig.html" %}
+							</div>
+							{% endif %}
+						{% endif %}
+
+				{% endfor %}
+								<div class="no-more-couples-view-global" style="display: none; height: 100%; margin: 0 auto;">
+							<div style="display: table-cell; vertical-align: middle;">
+							<div class=" no-more-couples card" style="width:85%; height: 60%; margin: 0 auto;">
+								<div class="card-title">
+									No Declined Couples!
+								</div>
+								<div class="card-content">
+									It looks like you haven't declined any couples, way to be a friend for everyone!
+								</div>
+								<div class="card-action">
+									<a class="btn light-blue" href="/profile">Back to Profile</a>
+								</div>
+							</div>
+							</div>
+					</div>
+			    </div>

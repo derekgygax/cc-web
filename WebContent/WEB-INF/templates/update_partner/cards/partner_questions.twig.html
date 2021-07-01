@@ -1,0 +1,15 @@
+				<div class="card">
+					<div class="card_title">
+						<span>Tell us about yourself</span>
+						<i class="material-icons">group_add</i>
+					</div>
+					<div class="card-content">
+						<div class="row">
+						{% for question in categoricalQuestions %}
+							{% set choiceMade = partner[question.id] %}
+							{% include "../../categorical_questions/categorical_question.twig.html" %}
+						{% endfor %}
+						<button type="submit" class="btn light-blue right">Save</button>
+						</div>
+					</div>
+				</div>

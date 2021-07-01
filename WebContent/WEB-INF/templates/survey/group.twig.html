@@ -1,0 +1,30 @@
+{% set active = "" %}
+{% if webPageOn == "/requirements" %}
+	{% set active = "active" %}
+{% endif %}
+<li class="survey_group {{active}}" data-group_id="{{group.id}}">
+	<div class="collapsible-header">
+		<div class="collapsible-title col s12"><i style="font-size: 48px;" class="material-icons hide-on-med-and-down">arrow_drop_down</i>{{group.title}}</div>
+		<div class="collapsible-summary col s12 right-align"><span class="num_answered">{{group.numAnswered}}</span>/<span class="num_questions">{{group.numQuestions}}</span> questions answered</div>
+	</div>
+	<div class="collapsible-body">
+		<div class="questions">
+			<div class="row">
+			{% set questionSet = survey[group.id] %}
+			
+			{% set cols = 3 %}
+			{% for question in questionSet %}
+			  {% if loop.index0 % cols == 0 %}
+			    <div class="row">
+			  {% endif %}
+			   {% include "question.twig.html" %}
+			  {% if (loop.index0 % cols == cols - 1 or loop.last) %}
+			    </div>
+			  {% endif %}
+			{% endfor %}
+			
+
+			</div>
+		</div>
+	</div>
+</li>

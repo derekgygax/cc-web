@@ -1,0 +1,323 @@
+{% extends "../base.twig.html" %}
+
+{% block content %}
+
+
+{% if isMobile %}
+  <div class="row profile_actions_container">
+  		<ul class="profile_actions">
+  			{% include "../action_bar/back_to_profile.html" %}
+			{% include "../action_bar/update_couple.html" %}
+  			{% include "../action_bar/update_personality.html" %}
+  			{% include "../action_bar/upload_images.html" %}
+  		</ul>
+  	</div>
+
+<div id="recommendedSingle">
+
+	
+
+	
+	{% if allRecommendedMatches is empty %}
+		<div id="no-more-couples-view" style="display: table; height: 100%;">
+		<div style=" vertical-align: middle;">
+		<div class=" no-more-couples card" style="width:85%; height: 60%; margin: 0 auto;">
+			<div class="card-title">
+				No More Couples!
+			</div>
+			<div class="card-content">
+				It looks like you are all out of recommended couples to browse through. Why don't you
+				check back in later for some more?
+			</div>
+			<div class="card-action">
+				<a class="btn light-blue" href="/profile">Back to Profile</a>
+			</div>
+		</div>
+		</div>
+		</div>
+	{% else %}
+		{% set couple = firstRecommendedCouple %}
+		{% set coupleCount = 0 %}
+		{% for recommenedCouple in allRecommendedMatches %}
+			{% if recommenedCouple.approve == 'none' %}
+			{% set coupleCount = coupleCount + 1 %}				
+			
+			{% set couple = recommenedCouple.couple %}
+			{% include "couple.twig.html" %}
+			{% endif %}
+		{% endfor %}
+					{% if coupleCount == 0 %}
+						{% include 'outOfCouples.html' %}
+					{% endif %}		
+		
+
+		<div id="no-more-couples-view" class="hidden" style="display: table; height: 100%;">
+		<div style=" vertical-align: middle;">
+		<div class=" no-more-couples card" style="width:85%; height: 60%; margin: 0 auto;">
+			<div class="card-title">
+				No More Couples!
+			</div>
+			<div class="card-content">
+				It looks like you are all out of recommended couples to browse through. Why don't you
+				check back in later for some more?
+			</div>
+			<div class="card-action">
+				<a class="btn light-blue" href="/profile">Back to Profile</a>
+			</div>
+		</div>
+		</div>
+		</div>
+	{% endif %}
+</div>
+
+{% else %}
+
+<header>
+
+	<div class="container">
+		
+		<div class="row">
+		
+			<div class="col s12 m12 l4">
+			
+				<div class="header-partner-profile">
+				
+					<div class="header-partner-img">
+					{% set img = {'large': '/img/avatar.png'} %}
+					{% if homeCouple != null %}
+						{% set img = homeCouple.profilePictures[0] %}
+					{% endif %}	
+						<img id="profilePic" style="background-image: url({{img.large}}); 
+				   		 {% if homeCouple.coupleId != couple.coupleId %}
+				   		 	
+				   		 {% endif %}
+						"> <!--  end img -->
+						{% if homeCouple != null and homeCouple.coupleId == couple.coupleId %}
+						<a class="modal-trigger addProfilePicture btn-floating btn-large waves-effect waves-light light-blue" href="#upload_profile_pic"><i class="material-icons">add_a_photo</i></a>
+						{% endif %}
+					</div>
+				
+				    <div class="header-partner-name">
+				    	{% if userInCouple == true %}
+				    		{{ homePartner.firstName }} & {{ awayPartner.firstName }}
+				    	{% else %}
+				    		{{ partner.firstName }} {{ partner.lastName }}
+				    	{% endif %}
+				    </div>
+				    
+
+				   
+				    <div class="header-stats">
+				    	{% if homeCouple != null %}
+						<a href="/recommended_couples" class="header-stat col s4">
+							<div>
+								<i class="material-icons">recent_actors</i>
+							</div>
+							<span>browse couples</span>
+						</a>
+						{% else %}
+						<a href="/profile/update" class="header-stat col s4">
+							<div>
+								<i class="material-icons">edit</i>
+							</div>
+							<span>update profile</span>
+						</a>
+						{% endif %}
+						{% if homeCouple != null %}
+						<a href="/matches" class="header-stat col s4">
+							<div>
+								<i class="material-icons">group_add</i>
+							</div>
+							<span>matches</span>
+						</a>
+						{% else %}
+						<a href="/couple_up" class="header-stat col s4">
+							<div>
+								<i class="material-icons">group_add</i>
+							</div>
+							<span>couple up</span>
+						{% endif %}
+						<a href="/chat" class="header-stat col s4">
+							<div>
+								<i class="material-icons">message</i>
+							</div>
+							<span>messages</span>
+						</a>
+				    </div>
+
+				    
+				</div>
+				
+			</div>
+			
+			<!-- HEADER CONTENT--> 
+			<div class="col s12 m12 l8">
+			
+				<div class="header-content hide-on-med-and-down">
+					<h1>These are your recommended couples</h1>
+				</div>
+			
+			</div>
+			
+			<!-- HEADER CARD -->
+			<div class="col s12 m12 l4 push-l2">
+				<div class="card">
+					<div class="card-title">
+						<i class="material-icons">priority_high</i>Improve your Matching
+					</div>
+					<div class="card-content">
+						<p>
+							Our genius algorithm will recommend better couples the more survey questions you answer.
+						</p>
+					</div>
+					<div class="card-action">
+						<a class="btn light-blue" href="/survey">Go to your Survey</a>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		
+	</div>
+	
+</header>
+  <div class="row profile_actions_container">
+  		<ul class="profile_actions">
+  			{% include "../action_bar/back_to_profile.html" %}
+			{% include "../action_bar/update_couple.html" %}
+  			{% include "../action_bar/update_personality.html" %}
+  			{% include "../action_bar/upload_images.html" %}
+  		</ul>
+  	</div>
+
+<div id="sheet">
+
+  	<div class="container">
+  	
+  	<div class="row recommended_view">
+  	
+ 		<div class="marco col s12 m12 l12">
+ 		
+ 			{#<div class="col s12 hide-on-med-and-down">
+ 				<div id="search">
+					<form id="searchForm">
+					{% for param in searchParams %}
+						{% include "../search/param.twig.html" %}
+					{% endfor %}
+
+					</form>
+				</div>
+ 			</div>#}
+ 		
+ 			<div id="recommendedList">
+
+
+				<ul class="tabs z-depth-1" style="margin-bottom: 24px;">
+			        <li class="tab col s4"><a class="active" href="#recommendedCouples">Recommended</a></li>
+			        <li class="tab col s4"><a href="#approvedCouples">Approved</a></li>
+			        <li class="tab col s4"><a href="#declinedCouples">Declined</a></li>
+			    </ul>
+			    <div id="recommendedCouples">
+			    	{% set coupleCount = 0 %}	
+			    
+					{% for recommenedCouple in allRecommendedMatches %}
+						{% if recommenedCouple.coupleApprove != 'approve' and recommenedCouple.coupleApprove != 'decline' %}
+							{% set coupleCount = coupleCount + 1 %}				
+							{% set couple = recommenedCouple.couple %}
+							<div class="waldo col s12 m12 l4">
+							{% include "couple.twig.html" %}
+							</div>
+						{% endif %}
+					{% endfor %}
+
+					<div class="no-more-couples-view-global" style="display: none; height: 100%; margin: 0 auto;">
+							<div style="display: table-cell; vertical-align: middle;">
+							<div class=" no-more-couples card" style="width:85%; height: 60%; margin: 0 auto;">
+								<div class="card-title">
+									No More Couples!
+								</div>
+								<div class="card-content">
+									It looks like you are all out of recommended couples to browse through. Why don't you
+									check back in later for some more?
+								</div>
+								<div class="card-action">
+									<a class="btn light-blue" href="/profile">Back to Profile</a>
+								</div>
+							</div>
+							</div>
+					</div>
+			    </div>
+			    
+			    <div id="approvedCouples">
+			    {% set coupleCount = 0 %}	
+			    
+			    {% for recommenedCouple in allRecommendedMatches %}
+					
+						{% if recommenedCouple.coupleApprove == 'approve' %}
+							{% set coupleCount = coupleCount + 1 %}			
+							{% set couple = recommenedCouple.couple %}
+							{% if couple.coupleId != homeCouple.coupleId %}
+								<div class="waldo col s12 m12 l4">
+									{% include "couple.twig.html" %}
+								</div>
+							{% endif %}
+						{% endif %}
+
+				{% endfor %}
+
+					<div class="no-more-couples-view-global" style="display: none; height: 100%; margin: 0 auto;">
+							<div style="display: table-cell; vertical-align: middle;">
+							<div class=" no-more-couples card" style="width:85%; height: 60%; margin: 0 auto;">
+								<div class="card-title">
+									No Approved Couples!
+								</div>
+								<div class="card-content">
+									It looks like you haven't approved any couples yet, why don't you browse through your recommended list and try and match some!
+								</div>
+							</div>
+							</div>
+					</div>
+			    </div>
+			    <div id="declinedCouples">
+			    {% for recommenedCouple in allRecommendedMatches %}
+					
+						{% if recommenedCouple.coupleApprove == 'decline' %}
+							{% set couple = recommenedCouple.couple %}
+							{% if couple.coupleId != homeCouple.coupleId %}
+								<div class="waldo col s12 m12 l4">
+									{% include "couple.twig.html" %}
+								</div>
+							{% endif %}
+						{% endif %}
+				{% endfor %}
+				<div class="no-more-couples-view-global" style="display: none; height: 100%; margin: 0 auto;">
+							<div style="display: table-cell; vertical-align: middle;">
+							<div class=" no-more-couples card" style="width:85%; height: 60%; margin: 0 auto;">
+								<div class="card-title">
+									No Declined Couples!
+								</div>
+								<div class="card-content">
+									It looks like you haven't declined any couples.
+								</div>
+							</div>
+							</div>
+					</div>
+			    </div>
+			</div>
+ 		</div>
+
+ 		
+	</div>
+	
+  	</div>
+  </div>
+
+{% endif %}
+
+{% include 'newMatchModal.html' %}
+
+<script src="js/recommended-couples.js"></script>
+<script src="js/block.js"></script>
+
+
+{% endblock %}

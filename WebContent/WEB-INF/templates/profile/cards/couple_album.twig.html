@@ -1,0 +1,103 @@
+{% if homeCouple != null and homeCouple.coupleId == couple.coupleId %}
+<div class="row">	
+	
+		<div class="col s12 m12 l4" data-1 data-6 data-9>
+			{% for inputName,value in homeCouple.profilePictures %}
+			
+					{% if inputName == "1" %}
+						{% include "../../images/single.html" %}
+					{% endif %}
+					{% if inputName == "6" %}
+						{% include "../../images/single.html" %}
+					{% endif %}
+					{% if inputName == "8" %}
+						{% include "../../images/single.html" %}
+					{% endif %}
+			{% endfor %}
+		</div>
+				
+		<div class="col s12 m12 l4" data-2 data-4 data-7>
+			{% for inputName,value in homeCouple.profilePictures %}
+
+					{% if inputName == "2" %}
+						{% include "../../images/single.html" %}
+					{% endif %}
+					{% if inputName == "4" %}
+						{% include "../../images/single.html" %}
+					{% endif %}
+					{% if inputName == "9" %}
+						{% include "../../images/single.html" %}
+					{% endif %}
+
+			{% endfor %}
+		</div>
+		
+		<div class="col s12 m12 l4" data-3 data-5 data-8>
+			{% for inputName,value in homeCouple.profilePictures %}
+
+					{% if inputName == "3" %}
+						{% include "../../images/single.html" %}
+					{% endif %}
+					{% if inputName == "5" %}
+						{% include "../../images/single.html" %}
+					{% endif %}
+					{% if inputName == "7" %}
+						{% include "../../images/single.html" %}
+					{% endif %}
+			{% endfor %}
+		</div>
+		
+	</div>
+
+{% else %}
+	<div class="row">	
+	
+		<div class="col s12 m12 l4" data-1 data-6 data-9>
+			{% for inputName,value in couple.profilePictures %}
+			
+					{% if inputName == "1" %}
+						{% include "../../images/single.html" %}
+					{% endif %}
+					{% if inputName == "6" %}
+						{% include "../../images/single.html" %}
+					{% endif %}
+					{% if inputName == "8" %}
+						{% include "../../images/single.html" %}
+					{% endif %}
+			{% endfor %}
+		</div>
+				
+		<div class="col s12 m12 l4" data-2 data-4 data-7>
+			{% for inputName,value in couple.profilePictures %}
+
+					{% if inputName == "2" %}
+						{% include "../../images/single.html" %}
+					{% endif %}
+					{% if inputName == "4" %}
+						{% include "../../images/single.html" %}
+					{% endif %}
+					{% if inputName == "9" %}
+						{% include "../../images/single.html" %}
+					{% endif %}
+
+			{% endfor %}
+		</div>
+		
+		<div class="col s12 m12 l4" data-3 data-5 data-8>
+			{% for inputName,value in couple.profilePictures %}
+
+					{% if inputName == "3" %}
+						{% include "../../images/single.html" %}
+					{% endif %}
+					{% if inputName == "5" %}
+						{% include "../../images/single.html" %}
+					{% endif %}
+					{% if inputName == "7" %}
+						{% include "../../images/single.html" %}
+					{% endif %}
+			{% endfor %}
+		</div>
+		
+	</div>
+
+{% endif %}

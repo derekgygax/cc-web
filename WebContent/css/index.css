@@ -1,0 +1,26 @@
+#forgotPasswordLink{
+	padding-right: 5px;
+	cursor:pointer;
+    color:-webkit-link;
+    text-decoration:underline;
+}
+#forgotPasswordLink:active{
+	color: red;
+}
+#forgotPasswordLink:visited{
+	color: green;
+}
+
+#createAcountLink{
+	float: right;
+	padding-left: 5px;
+}
+
+#forgotPasswordDiv{
+	padding-top: 10px;
+	display: none;
+}
+
+#cpResponse{
+	padding-top: 10px
+}

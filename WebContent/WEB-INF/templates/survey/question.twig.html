@@ -1,0 +1,56 @@
+<div class="col s12 m6 l4">
+<div class="question col card" data-question-id="{{ question.id }}">
+	<div class="questionChoices col s12">
+		<div class="card-title questionText">{{ question.text }} </div>
+		{% for choice in question.choices %}
+		{% if (loop.last) %}
+			{% if (loop.index) is odd %}
+				<div class="choice col s12">
+					<label>
+						<input type="radio" name="{{ question.id }}_choice" value="{{ choice.value }}"
+						{% if question.currentValueIsNotNull() and question.currentValue == choice.value %}
+						checked
+						{% endif %}
+						>
+						<span>{{ choice.text }}</span>
+					</label>
+				</div>
+			{% endif %}
+		{% else %}
+		<div class="choice col s12">
+			<label>
+				<input type="radio" name="{{ question.id }}_choice" value="{{ choice.value }}"
+				{% if question.currentValueIsNotNull() and question.currentValue == choice.value %}
+				checked
+				{% endif %}
+				>
+				<span>{{ choice.text }}</span>
+			</label>
+		</div>
+		{% endif %}
+		{% endfor %}
+	</div>
+	<div class="importances col s12">
+		<div class="card-title questionText">Importance</div>
+		<div class="importanceChoices">
+		
+		
+		<div class="well">
+		  <div class="no-ui-slider">
+		    <div class="slider"></div>
+		    <ul class="slider-labels eleven-columns">
+		    {% for strength in importance %}
+		    	{% if question.currentImportance == strength.value %}
+		    		<li class="active">{{ strength.text }}</li>
+		    	{% else %}
+		    		<li>{{ strength.text }}</li>
+		    	{% endif %}
+		    {% endfor %}
+
+		    </ul>
+		  </div>
+		</div>
+		</div>
+	</div>
+</div>
+</div>

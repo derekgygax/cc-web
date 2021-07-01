@@ -1,0 +1,101 @@
+{% extends "../base.twig.html" %}
+
+{% block content %}
+<h1 class="textCenter">Update <span id="loginUsername"></span>'s info</h1>
+<h2 class="textCenter">Please add aditional information</h2>
+<div>
+	<div id="partnerInfo" class="textCenter">
+
+		<div>
+			<div class="inlineBlock">
+				<label class="inputRequired">First Name:</label>
+			</div>
+			<div class="alignLeft inlineBlock">
+				<input id="firstName" type="text" required="required">
+			</div>
+		</div>
+
+		<div>
+			<div class="inlineBlock">
+				<label>Middle Name:</label>
+			</div>
+			<div class="alignLeft inlineBlock">
+				<input id="middleName" type="text">
+			</div>
+		</div>
+
+		<div>
+			<div class="inlineBlock">
+				<label class="inputRequired">Last Name:</label>
+			</div>
+			<div class="alignLeft inlineBlock">
+				<input id="lastName" type="text" required="required">
+			</div>
+		</div>
+
+		<div>
+			<div class="inlineBlock">
+				<label class="inputRequired">Age:</label>
+			</div>
+			<div class="alignLeft inlineBlock">
+				<input id="age" type="text" required="required">
+				<span id="failAge">The Age must be a number</span>
+			</div>
+		</div>
+
+		<div>
+			<div class="inlineBlock">
+				<label>Phone Number:</label>
+			</div>
+			<div class="alignLeft inlineBlock">
+				<input id="phoneNumber" type="text">
+				<span id="failPhoneNumber">The Phone Number must be a number</span>
+			</div>
+		</div>
+
+		<div>
+			<div class="inlineBlock">
+				<label>Address: </label>
+			</div>
+			<div class="alignLeft inlineBlock">
+				<input id="address" type="text">
+			</div>
+		</div>
+		
+		<div>
+			<div class="inlineBlock">
+				<label>City: </label>
+			</div>
+			<div class="alignLeft inlineBlock">
+				<input id="city" type="text">
+			</div>
+		</div>
+		
+		<div>
+			<div class="inlineBlock">
+				<label>State: </label>
+			</div>
+			<div class="alignLeft inlineBlock">
+				<select id="state"></select>
+			</div>
+		</div>
+		
+		<div>
+			<div class="inlineBlock">
+				<label class="inputRequired">Zip Code:</label>
+			</div>
+			<div class="alignLeft inlineBlock">
+				<input id="zipcode" type="text" required="required">
+				<span id="failZipcode">The Zip Code must be a number</span>
+			</div>
+		</div>
+	</div>
+	<div id="cancelSubmitUpdatePartnerDiv" class="textCenter">
+		<button id="save">Save</button>
+	</div>
+
+</div>
+<span class="inputRequired">Required fields</span>
+<script src="js/updatePartner.js"></script>
+
+{% endblock %}

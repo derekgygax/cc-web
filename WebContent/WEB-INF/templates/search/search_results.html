@@ -1,0 +1,28 @@
+{% if defined(searchResults) %}
+	{% if length(searchResults) %}
+	<div class="row search_results_view">
+		<div class="marco col s12 m12 l12">
+			{% for recommenedCouple in searchResults %}
+			{% set couple = recommenedCouple.couple %}
+			{% if couple.coupleId != homeCouple.coupleId %}
+				{% if recommenedCouple.isMatch == false %}
+					
+						{% if recommenedCouple.coupleApprove != "approve" and recommenedCouple.coupleApprove != "decline" %}
+							<div class="waldo col s12 m12 l4">
+								{% include "../recommended/couple.twig.html" %}
+							</div>
+						{% endif %}
+					
+				
+				{% endif %}
+
+				
+				
+			{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+	{% else %}
+		<h2 id="searchNoResults">Your search produced no results.</h2>
+	{% endif %}
+{% endif %}

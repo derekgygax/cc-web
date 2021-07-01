@@ -1,0 +1,24 @@
+<form method="post" enctype="multipart/form-data" class="uploadImagesForm">
+	<div class="ccImage card z-depth-1">
+		<div class="ccNoImage">
+				Drag and Drop
+				<i class="material-icons">cloud_upload</i>
+				your favorite photos
+		</div>
+		<img src="" draggable="true">
+		<div class="ccImage-actions">
+		<input id="image_upload_0" 
+			class="image_upload"
+			type="file"
+			name="0"
+			accept=".jpg, .jpeg, .png">
+			<button class="btn light-blue left upload">Select Image</button>
+			{% if img.native %}
+			<button class="btn light-blue right delete">Delete Image</button>
+			{% else %}
+			<button class="btn light-blue right" type="submit">Save Image</button>			
+			{% endif %}
+			<div style="clear:both;"></div>
+		</div>
+	</div>
+</form>

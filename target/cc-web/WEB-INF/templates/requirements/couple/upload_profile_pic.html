@@ -1,0 +1,29 @@
+<div id="upload_profile_pic" style="margin:0 auto;">
+	<form method="post" enctype="multipart/form-data" class="uploadImagesForm">
+		<div class="image-wrapper">
+			<div class="card">
+				<div class="image">
+					<input id="image_upload_0" 
+					class="image_upload"
+					type="file"
+					name="0"
+					accept=".jpg, .jpeg, .png">
+					<div id="image_preview_0" class="image_preview">
+						<div class="image_upload_title">
+							<i class="top-left material-icons">add_a_photo</i>
+							<i class="material-icons">cloud_upload</i>
+							Drag and Drop
+							<br />a photo of you and {{awayPartner.firstName}}
+						</div>
+					<img src="" >
+					</div>
+				</div>
+				<div class="card-action">
+					<button type="button" class="btn light-blue upload profilePicUpload">Upload Image</button>
+					<button type="submit" class="btn light-blue profilePicSave modal-close right"  style="display:none">Save as Profile Picture</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+

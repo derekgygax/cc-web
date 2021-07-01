@@ -1,0 +1,90 @@
+<header>
+
+	<div class="container">
+		
+		<div class="row">
+		
+			<!-- PARTNER PROFILE -->
+			<!-- 
+			<div class="col s12">
+			<div class="header-partner-profile">
+				<div class="header-partner-img">
+					<img src="/img/avatar.png">
+				</div>
+			    <div class="header-partner-name">
+			    	Lori Soft
+			    </div>
+			</div>
+			</div>
+			-->
+			<!-- COUPLE PROFILE -->
+			<div class="col s12 m12 l4">
+			
+				<div class="header-partner-profile">
+				
+					<div class="header-partner-img">
+						<img src="/img/avatar.png">
+						<a class="modal-trigger addProfilePicture btn-floating btn-large waves-effect waves-light light-blue" href="#upload_profile_pic"><i class="material-icons">add_a_photo</i></a>
+						
+					</div>
+				
+				    <div class="header-partner-name">
+				    	{{ homePartner.firstName }} & {{ awayPartner.firstName }}
+				    </div>
+				    
+				    <div class="header-stats">
+						<a href="#" class="header-stat col s4">
+							<div>
+								<i class="material-icons">face</i>
+							</div>
+							<span>your partner</span>
+						</a>
+						<a href="#" class="header-stat col s4">
+							<div>
+								<i class="material-icons">message</i>
+							</div>
+							<span>messages</span>
+						</a>
+						<a href="#" class="header-stat col s4">
+							<div>
+								<i class="material-icons">group_add</i>
+							</div>
+							<span>matches</span>
+						</a>
+				    </div>
+				
+				    
+				</div>
+				
+			</div>
+			
+			<!-- HEADER CONTENT--> 
+			<div class="col s12 m12 l8 pull-xl2">
+			
+				<div class="header-content hide-on-med-and-down">
+					<h1>Welcome to your profile, {{ partnerHigher.firstName }} and {{ partnerLower.firstName }}</h1>
+				</div>
+			
+			</div>
+			
+			<!-- HEADER CARD -->
+			<div class="col s12 m12 l4 push-l2">
+				<div class="card">
+					<div class="card-title">
+						This is your couple profile!
+					</div>
+					<div class="card-content">
+						<p>It looks like there is some missing information about your couple. Why don't you add some images or tell us more about yourself?</p>
+					</div>
+					<div class="card-action">
+						<a href="#">Update Couple</a>
+						<a href="#">Upload Photos</a>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		
+	</div>
+	
+</header>

@@ -1,0 +1,30 @@
+<div id="requirements">
+{% if homePartner.updatesNeeded %}
+
+	{% if homePartner.updatesNeeded.partner %}
+		<!-- First Stage: Lets get them warmed up by updating profile -->
+		{% include "partner/form.html" %}
+	{% else %}
+	
+		{% if homePartner.updatesNeeded.survey %}
+			<!-- Second Stage: Survey -->
+			{% include "../survey/survey_content.html" %}
+		
+		{% else %}
+			
+			{% if homeCouple == null %}
+				<!-- Third Stage: Create a couple -->
+				{% include "../couple_up/couple_up_base_min.html"  %}   
+			{% else %}
+			
+				<!-- Fourth Stage: Update their couple profile -->
+				{% if homePartner.updatesNeeded.couple %}
+					{% include "couple/base.html" %}
+				{% endif %}
+			{% endif %}
+		
+		{% endif %}
+	
+	{% endif %}
+{% endif %}
+</div>

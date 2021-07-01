@@ -1,0 +1,52 @@
+#recommendedSection{
+	border: 1px solid black;
+	width: 30%;
+    margin: auto;
+    text-align: center;
+}
+
+#noRecommendedCouple{
+	display: none;
+}
+
+
+h3{
+	margin: 0;
+}
+#messagePopUp{
+	height: 50%;
+	max-height: 250px;
+}
+
+#messageText{
+	/* THIS MUST CHANGE!! */
+	height: 100px;
+	width: 40%;
+}
+
+.recCoupleIndividual{
+	display: inline-block;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.recCoupleIndividualName{
+	margin: 0;
+}
+
+#recommendedList{
+	width: 160px;
+}
+
+.recommended_couple {
+	border: 1px solid black;
+	display: inline-block;
+}
+
+#recommendedList {
+	display: inline-block;
+},
+
+#recommendedSingle {
+	display: inline-block;
+}
+

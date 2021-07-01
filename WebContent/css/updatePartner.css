@@ -1,0 +1,21 @@
+#inputTable{
+	width: 50%;
+}
+
+.childrenRow{
+	display: none;
+}
+
+#cancelSubmitUpdatePartnerDiv{
+	padding-top: 10px;
+}
+
+#failAge{
+	display: none;
+}
+#failPhoneNumber{
+	display: none;
+}
+#failZipcode{
+	display: none;
+}

@@ -1,0 +1,95 @@
+<div class="couple_details_card">
+<div class="card">
+  			<div class="row">
+    <div class="col s12">
+      <ul class="tabs" style="background: #eee;
+    border-bottom: 2px solid #e4e4e4;">
+        <li class="tab col s6"><a class="active" href="#test2">About {{ partnerHigher.firstName }}</a></li>
+        <li class="tab col s6"><a href="#test1">About {{ partnerLower.firstName }}</a></li>
+      </ul>
+    </div>
+    <div class="tabs_content">
+      <div id="test2" class="col s12">
+        <div class="person_info_section">
+          {% if length(partnerHigher.age) != null %}
+          		<p><label>Age</label> <span>{{ partnerHigher.age }}</span></p>
+          	{% else %}
+          		<p><label>Age</label> <span>Not Provided</span></p>
+          	{% endif %}
+          
+          	{% if length(partnerHigher.gender) != null %}
+          		 <p><label>Gender</label> <span>{{ partnerHigher.gender }}</span></p>
+          	{% else %}
+          		 <p><label>Gender</label> <span>Not Provided</span>
+          	{% endif %}
+          	
+          	{% if length(partnerHigher.city) != null or length(partnerHigher.state) != null %}
+          		 <p><label>Location</label> <span>{{ partnerHigher.city }}, {{ partnerHigher.state }}</span></p>
+          	{% else %}
+          		<p><label>Location</label> <span>Not Provided</span>
+          	{% endif %}
+          	
+          	{% if length(couple.numChildren) != null %}
+          		<p><label>Kids</label> <span>{{ couple.numChildren }}</span></p>
+          	{% else %}
+          		<p><label>Age</label> <span>Not Provided</span></p>
+          	{% endif %}
+
+			{% if length(partnerHigher.drink) != null %}
+          		<p><label>Drinking</label> <span>{{ partnerHigher.drink }}</span></p>
+          	{% else %}
+          		<p><label>Drinking</label> <span>Not Provided</span></p>
+          	{% endif %}
+          	
+          	{% if length(partnerHigher.smoke) != null %}
+          		<p><label>Smoking</label> <span>{{ partnerHigher.smoke }}</span></p>
+          	{% else %}
+          		<p><label>Smoking</label> <span>Not Provided</span></p>
+          	{% endif %}
+        </div>
+
+      </div>
+	  <div id="test1" class="col s12">
+        <div class="person_info_section">
+        	{% if length(partnerLower.age) != null %}
+          		<p><label>Age</label> <span>{{ partnerLower.age }}</span></p>
+          	{% else %}
+          		<p><label>Age</label> <span>Not Provided</span></p>
+          	{% endif %}
+          
+          	{% if length(partnerLower.gender) != null %}
+          		 <p><label>Gender</label> <span>{{ partnerLower.gender }}</span></p>
+          	{% else %}
+          		 <p><label>Gender</label> <span>Not Provided</span>
+          	{% endif %}
+          	
+          	{% if length(partnerLower.city) != null or length(partnerLower.state) != null %}
+          		 <p><label>Location</label> <span>{{ partnerLower.city }}, {{ partnerLower.state }}</span></p>
+          	{% else %}
+          		<p><label>Location</label> <span>Not Provided</span>
+          	{% endif %}
+          	
+          	{% if length(couple.numChildren) != null %}
+          		<p><label>Kids</label> <span>{{ couple.numChildren }}</span></p>
+          	{% else %}
+          		<p><label>Age</label> <span>Not Provided</span></p>
+          	{% endif %}
+
+			{% if length(partnerLower.drink) != null %}
+          		<p><label>Drinking</label> <span>{{ partnerLower.drink }}</span></p>
+          	{% else %}
+          		<p><label>Drinking</label> <span>Not Provided</span></p>
+          	{% endif %}
+          	
+          	{% if length(partnerLower.smoke) != null %}
+          		<p><label>Smoking</label> <span>{{ partnerLower.smoke }}</span></p>
+          	{% else %}
+          		<p><label>Smoking</label> <span>Not Provided</span></p>
+          	{% endif %}
+        </div>
+
+      </div>
+    </div>
+  </div>
+  		</div>
+  	</div>

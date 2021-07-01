@@ -1,0 +1,64 @@
+<!-- 
+<div class="loginDiv card">
+	<div class="card-title">
+		<span>Already registered?</span>
+		<i class="material-icons">how_to_reg</i>
+	</div>
+	<div class="card-content">
+		<form id="loginForm">
+			<div>
+				<div class="row">
+					<div class="input-field col s12">
+						<input name="username" type="text" required>
+						<label class="inputRequired">Username or Email:</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12">
+						<input name="password" type="password" required>
+						<label>Password:</label>
+					</div>
+				</div>
+			</div>	
+	</div>
+	<div class="card-action">
+		<input type="submit" class="login-btn btn blue" value="LOGIN" />
+	</div>
+	</form>
+
+</div>
+ -->
+ 
+ <div class="loginDiv card">
+	<div class="card-title">
+		<i class="material-icons">how_to_reg</i>
+		<span>Already registered?</span>
+	</div>
+	<div class="card-content">
+		<form id="loginForm">
+			<div>
+				<div class="row">
+					<div class="input-field col s6">
+						<input id="loginUsername" class="validate" name="username" type="text">
+						<label for="loginUsername" class="inputRequired">Username:</label>
+						<span class="active helper-text" data-error="" data-success=""></span>
+						
+					</div>
+
+					<div class="input-field col s6">
+						<input id="loginPassword" class="validate" name="password" type="password">
+						<label for="loginPassword">Password:</label>
+						<span class="active helper-text" data-error="" data-success=""></span>
+						
+					</div>
+				</div>
+			</div>	
+	</div>
+	<div class="card-action">
+		<input type="submit" class="login-btn btn light-blue" value="LOGIN" />
+	</div>
+	</form>
+
+</div>
+<script src="js/login.js"></script>
+

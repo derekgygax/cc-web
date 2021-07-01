@@ -1,0 +1,34 @@
+<div class="col s12 m12 l6" data-partner="partner_{{ account }}">
+	<h5>{% if "higher" == account %}Your {% else %}Partner's {% endif %}profile</h5>
+	<div class="row">
+		<div class="input-field col s6">
+			<input id="createAccountfirstName_{{account}}" name="firstName_{{account}}" type="text" class="validate">
+			<label for="createAccountfirstName_{{account}}">First Name</label>
+			<span class="active helper-text" data-error="" data-success=""></span>
+		</div>
+		<div class="input-field col s6">
+			<input id="createAccountlastName_{{account}}" name="lastName_{{account}}" type="text" class="validate">
+			<label for="createAccountlastName_{{account}}">Last Name</label>
+			<span class="active helper-text" data-error="" data-success=""></span>
+		</div>
+	</div>
+	<div class="row">
+		<div class="input-field col s6">
+			<input id="createAccountAge_{{account}}" name="age_{{account}}" type="number" class="validate">
+			<label for="createAccountAge_{{account}}">Age</label>
+			<span class="active helper-text" data-error="" data-success=""></span>
+		</div>
+		<div class="input-field col s6">
+			<div class="input-field col s12">
+				<select id="gender_select_{{account}}" name="gender_{{account}}">
+					<option value="" disabled selected>Gender</option>
+					<option value="Female">Female</option>
+					<option value="Male">Male</option>
+					<option value="Identify Other">Identify Other</option>
+				</select>
+				<label>What is your gender?</label>
+				<span class="active helper-text" data-error="" data-success=""></span>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="css/cc.css"/>
+<meta charset="UTF-8">
+<title>Failed Authorization</title>
+</head>
+<body>
+<h1 class="textCenter"><span id="username"></span> does not exist for Couples Connection.</h1>
+</body>
+<script>
+	document.getElementById("username").innerText = JSON.parse(localStorage.partner).username;
+</script>
+</html>

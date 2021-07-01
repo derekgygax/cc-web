@@ -1,0 +1,104 @@
+<div class="waldo col s12 m12 l4">
+	{% set partnerHigher = couple.partners[couple.partnerIdHigher] %}
+	{% set partnerLower = couple.partners[couple.partnerIdLower] %}
+	<div class="card recommended_couple_small recommeneded_couple_{{view}} recommended_couple_card" 
+		 data-coupleid="{{couple.coupleId}}">
+			{% set matchProfilePic = couple.profilePictures[0] %}
+			<div class="recommended_couple_header" style="background: #1565c0 url({{matchProfilePic.native}}) center center no-repeat;">
+				
+<a href="#" class="couple_vert_menu dropdown-trigger valign-wrapper" data-target="couple_block_{{loop.index}}">
+				<i class="material-icons">more_vert</i>
+			</a>
+			
+			<!-- Profile Icon Dropdown -->
+		    <ul id="couple_block_{{loop.index}}" class="dropdown-content">
+			    <li><a data-coupleId="{{ couple.coupleId }}" class="block_couple">Block Couple</a></li>
+			    
+			</ul>
+				
+			</div>
+			
+			<div class="match_couple_info">
+				<div class="row">
+					
+					<div class="col s12">
+						<span class="card-title away_couple_names">{{partnerHigher.firstName}} & {{partnerLower.firstName}}</span>
+					</div>
+					<div class="col s12 right-align">
+						<!--  <span class="left recommended_couple_timeTogether card-title hide-on-med-and-down">
+							Matched with 7 days ago
+						</span>-->
+						<span class="right recommended_couple_age card-title">ages {{partnerHigher.age}} & {{partnerLower.age}}</span>				
+					</div>
+				
+					
+				</div>
+	
+			</div>
+			
+			<div class="card-action center-align">
+				<button class="couple_match_send_message btn light-blue" 
+				data-roomid="{{ match.matchId }}"
+				data-matchhighername="{{ partnerHigher.firstName }}"
+				data-matchhigherid="{{ partnerHigher.partnerId }}"
+				data-matchlowername="{{ partnerLower.firstName }}"
+				data-matchlowerid="{{ partnerLower.partnerId }}">Send a Message</button>
+
+			</div>
+			
+			<!-- Couple Match Secondary option
+			    <ul id="couple_match_dropdown" class="dropdown-content">
+				    <li><a href="/profile">Couple Profile</a></li>
+				    <li><a href="/block">Block User</a></li>
+				    <li class="divider" tabindex="-1"></li>
+				    <li><a href="#!">Add More!</a></li>
+				</ul> -->
+		
+			<!--<div class="responsive-img card-image">
+	          <img src="/img/photo1.jpg">
+	          <span class="card-title">{{partnerHigher.firstName}} & {{partnerLower.firstName}}</span>
+	        </div>
+		<div class="couple_info">
+			<div>
+				Time Together:
+				<span>
+					{{couple.timeTogether}}
+				</span>
+			</div>
+			<div>
+			Relationship Type:
+				<span>
+					{{couple.relationshipType}}
+				</span>
+			</div>
+			<div>
+				Number of Children:
+				<span>
+					{{couple.numChildren}}
+				</span>
+			</div>
+			{% if (view == "detail") %}
+			{{view}}
+			<div>
+				Story:
+				<p>
+					{{couple.story}}
+				</p>
+			</div>
+			{% endif %}
+		</div>
+		{% if (view == "detail") %}
+			<div class="partners">
+				{% set partner = partnerHigher %}
+				{% include "partner.twig.html" %}
+				{% set partner = partnerLower %}
+				{% include "partner.twig.html" %}
+			</div>
+			<div>
+				<button class="recommended_approve" value="approve">Approve</button>
+				<button class="recommended_approve" value="decline">Decline</button>
+			</div>
+		{% endif %}
+		  -->
+	</div>
+</div>

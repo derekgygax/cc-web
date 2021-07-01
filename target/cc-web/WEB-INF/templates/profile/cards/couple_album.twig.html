@@ -1,0 +1,14 @@
+<div class="row">
+ {% for img in couple.profilePictures %}
+ 
+ <div class="col s12 m12 l4 xl3">
+ 	<a class="modal-trigger" href="#native_img_modal{{ loop.index0 }}"><div class="card-panel">
+ 	     <img src="{{ img.native }}" class="responsive-img" />
+ 	</div></a>
+</div> 
+
+<div id="native_img_modal{{ loop.index0 }}" class="native_img_modal modal" style="background-image: url('{{img.native}}');">
+ </div>
+  
+ {% endfor %}
+ </div>

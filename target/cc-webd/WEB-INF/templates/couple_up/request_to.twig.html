@@ -1,0 +1,37 @@
+{% for request in coupleUpRequests.to %}
+	{% set type = "to" %}
+<div class="coupleUpFormWrapper">
+	<form class="coupleUpForm">
+				<div class="card">
+					<div class="card_title">
+						<span>Active Couple Up Requests</span>
+						<i class="material-icons">email</i>
+					</div>
+					<div class="card-content">
+						<div id="requestsTo">
+							<div class="card_title">
+							<img src="/cc-web/img/avatar.png" width="64px" height="64px" />
+							{% if length(request.firstName) != null and length(request.lastName) != null %}
+									<span>{{ request.firstName }} {{ request.lastName }}</span>
+							{% else %}
+									<span>{{ request.emailAddress }}</span>
+							{% endif %}
+							<div class="right-align">
+							{% if length(request.firstName) != null and length(request.lastName) != null %}
+								Awaiting Response from {{ request.firstName }} {{ request.lastName }}
+							{% else %}
+								Awaiting Response from {{ request.emailAddress }}
+							{% endif %}
+							</div>
+						</div>
+						
+						<input type="hidden" name="partnerId" value="{{ request.partnerId }}"/>
+						</div>
+					    <div class="right-align">
+				    		<button type="submit" class="revokeCoupleUp btn light-blue" name="action" value="revoke">Revoke Couple Up Request</button>
+				    	</div>
+				    </div>
+			    </div>
+	</form>
+</div>
+{% endfor %}

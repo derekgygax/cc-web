@@ -1,0 +1,167 @@
+{% extends "../base.twig.html" %}
+
+{% block content %}
+
+{% set partners = couple.partners %}
+
+<header class="fullPageHeader">
+
+{% if awayPartner.emailAddress is null %}
+{% set partnerToAdd = awayPartner %}
+{% elseif homePartner.emailAdress is null %}
+{% set partnerToAdd = homePartner %}
+{% else %}
+
+{% endif %}
+
+<div id="createPartnerProfile" style="margin:0 auto;">
+	<div class="card">
+		<form id="createExtraLogin" method="POST" data-partnerid="{{ partnerToAdd.partnerId }}">
+			<div class="card-title">
+				Add Login
+			</div>
+			<div class="card-content">
+	   	    	<div class="row">
+	  	    			<div class="input-field col s12">
+						<input id="emailAddress" name="emailAddress" type="text" value="{{ partnerToAdd.emailAddress }}">
+						<label>Email Address:</label>
+						<span class="active helper-text" data-error=""></span>
+					</div>
+	   	    	
+	   	    		<div class="input-field col s12 m12 l6">
+						<input id="firstName" class="updatePartnerfirstName" name="firstName" type="text" value="{{ partnerToAdd.firstName }}">
+						<label class="inputRequired">First Name:</label>
+						<span class="active helper-text" data-error=""></span>
+					</div>
+	
+					<div class="input-field col s12 m12 l6">
+						<input id="lastName" class="updatePartnerlastName" name="lastName" type="text" value="{{ partnerToAdd.lastName }}">
+						<label class="inputRequired">Last Name:</label>
+						<span class="active helper-text" data-error=""></span>
+					</div>
+					
+				     <div class="input-field col s6">
+				       <input id="password" name="password" type="password" class="validate">
+				       <label for="password">Password</label>
+				       <span class="active helper-text" data-error="" data-success=""></span>
+				       
+				     </div>
+				     <div class="input-field col s6">
+				       <input id="passwordConfirm" type="password" class="validate">
+				       <label for="passwordConfirm">Confirm Password</label>
+				     </div>
+				     
+	   	    	</div>
+			</div>
+			
+			<div class="card-actions" style="padding: 16px; text-align: center;">
+				<button id="submitExtraLogin" type="submit" class="btn light-blue">Create Profile</a>				
+			</div>
+		
+		</form>
+	</div>
+</div>
+
+ </header>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.js"></script>
+ <script src="/js/updatePartner.js"></script>
+ 
+ <script type="text/javascript">
+ 	function validateEmail(email) {
+	    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	    return re.test(String(email).toLowerCase());
+	}
+ $("#createExtraLogin").on("submit", function(e) {
+	e.preventDefault();
+	
+	// selectors
+	var firstName = $("#firstName");
+	var firstNameHelper = $(firstName).siblings(".helper-text");
+	var lastName = $("#lastName");
+	var lastNameHelper = $(lastName).siblings(".helper-text");
+		
+	// payload
+	var formData = {
+			'partnerId': $("#createExtraLogin").attr("data-partnerid"),
+			'emailAddress': $("#emailAddress").val(),
+			'firstName': $("#firstName").val(),
+			'lastName': $("#lastName").val(),
+			'password': $("#password").val(),
+	};
+	
+	// verify every element is set
+	/* Name Validation */
+	var errors = 0;
+	if($(firstName).length && !firstName.val()) {
+		$(firstName).addClass("invalid");
+		$(firstNameHelper).attr('data-error', 'You must provide a first name');
+		errors++;
+	} else {
+		$(firstName).removeClass("invalid");
+	}
+	if($(lastName).length && !lastName.val()) {
+		$(lastName).addClass("invalid");
+		$(lastNameHelper).attr('data-error', 'You must provide a last name');
+		errors++;
+	} else {
+		$(lastName).removeClass("invalid");
+	}
+	
+	/* password confirm */
+	var pwd = $("#password");
+	var confirmPwd = $("#passwordConfirm");
+	if(pwd.val() == "" || confirmPwd.val() == "") {
+		$(pwd).addClass("invalid");
+		var pwdHelper = $(pwd).siblings(".helper-text");
+		$(pwdHelper).attr('data-error', 'You must have a password');
+		errors++;
+	}
+	if(pwd.val() != confirmPwd.val()) {
+		$(pwd).addClass("invalid");
+		var pwdHelper = $(pwd).siblings(".helper-text");
+		$(pwdHelper).attr('data-error', 'Your passwords do not match');
+		errors++;
+	}
+	
+	/* email */
+	var email = $("#emailAddress");
+	if(email.val() == "") {
+		$(email).addClass("invalid");
+		var emailHelper = $(email).siblings(".helper-text");
+		$(emailHelper).attr('data-error', 'Your must have an email address.');
+		errors++;
+	}
+	
+	if(!validateEmail(email.val()) && email.val() != "") {
+		$(email).addClass("invalid");
+		var emailHelper = $(email).siblings(".helper-text");
+		$(emailHelper).attr('data-error', 'Your must use a valid email address.');
+		errors++;
+	}
+	
+	/* abort if errors */
+	if(errors > 0) {
+		return;
+	}
+	
+	$.post("/extra-login", formData, function(data) {
+		var res = jQuery.parseJSON(data);
+		if(res.status == "success") {
+			$("#submitExtraLogin").addClass("green");
+			$("#submitExtraLogin").text("Login Created");
+			window.location.replace("/requirements");
+		} else {
+			var email = $("#emailAddress");
+
+			$(email).addClass("invalid");
+			var emailHelper = $(email).siblings(".helper-text");
+			$(emailHelper).attr('data-error', 'Sorry, this email is already being used.');
+
+		}
+	});
+	
+ });
+ </script>
+{% endblock %}
+          
+          

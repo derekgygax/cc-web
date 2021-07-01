@@ -1,0 +1,160 @@
+{% extends "../base.twig.html" %}
+
+{% block content %}
+
+<header>
+
+	<div class="container">
+  	
+  		<div class="row">
+  		
+<div class="col s12 m12 l4">
+			
+				<div class="header-partner-profile">
+				
+					<div class="header-partner-img">
+					{% set img = {'large': '/cc-web/img/avatar.png'} %}
+					{% if homeCouple != null %}
+						{% set img = homeCouple.profilePictures[0] %}
+					{% endif %}	
+						<img id="profilePic" style="background-image: url({{img.large}}); 
+				   		 {% if homeCouple.coupleId != couple.coupleId %}
+				   		 	border: 5px solid #ffd54f;
+				   		 {% endif %}
+						"> <!--  end img -->
+						{% if homeCouple != null and homeCouple.coupleId == couple.coupleId %}
+						<a class="modal-trigger addProfilePicture btn-floating btn-large waves-effect waves-light light-blue" href="#upload_profile_pic"><i class="material-icons">add_a_photo</i></a>
+						{% endif %}
+					</div>
+				
+				    <div class="header-partner-name">
+				    	{% if userInCouple == true %}
+				    		{{ homePartner.firstName }} & {{ awayPartner.firstName }}
+				    	{% else %}
+				    		{{ homePartner.firstName }} {{ homePartner.lastName }}
+				    	{% endif %}
+				    </div>
+				    
+				    {% if homeCouple.coupleId == couple.coupleId %}
+				   
+				    <div class="header-stats">
+				    	{% if homeCouple != null %}
+						<a href="/cc-web/recommended_couples" class="header-stat col s4">
+							<div>
+								<i class="material-icons">recent_actors</i>
+							</div>
+							<span>browse couples</span>
+						</a>
+						{% else %}
+						<a href="/cc-web/profile/update" class="header-stat col s4">
+							<div>
+								<i class="material-icons">edit</i>
+							</div>
+							<span>update profile</span>
+						</a>
+						{% endif %}
+						{% if homeCouple != null %}
+						<a href="/cc-web/matches" class="header-stat col s4">
+							<div>
+								<i class="material-icons">group_add</i>
+							</div>
+							<span>matches</span>
+						</a>
+						{% else %}
+						<a href="/cc-web/couple_up" class="header-stat col s4">
+							<div>
+								<i class="material-icons">group_add</i>
+							</div>
+							<span>couple up</span>
+						{% endif %}
+						{% if homeCouple != null %}
+						<a href="/cc-web/chat" class="header-stat col s4">
+							<div>
+								<i class="material-icons">message</i>
+							</div>
+							<span>messages</span>
+						</a>
+						{% else %}
+						<a href="/cc-web/survey" class="header-stat col s4">
+							<div>
+								<i class="material-icons">portrait</i>
+							</div>
+							<span>take survey</span>
+						</a>
+						{% endif %}
+						
+				    </div>
+					{% endif %}
+					{% if homeCouple.coupleId != couple.coupleId %}
+						<div class="away-couple-actions recommended_couple_card" data-coupleid="{{couple.coupleId}}">
+							<input type="hidden" id="nextRecommenedCouple" data-coupleid="{{nextRecommendedCouple}}">
+							<div><a class="btn left recommended_approve" href="#" data-value="approve"><span>Approve</span></a></div>
+							<div><a class="btn right recommended_approve" href="#" data-value="decline"><span>Pass</span></a></div>
+						</div>
+						<script src="js/recommended-couples.js"></script>
+						
+					{% endif %}
+				    
+				</div>
+				
+			</div>
+  			<!-- HEADER CONTENT--> 
+			<div class="col s12 m12 l8">
+			
+				<div class="header-content hide-on-med-and-down" >
+					<h1>Create your Couple by inviting your partner, {{ homePartner.firstName }}</h1>
+				</div>
+			
+			</div>
+			
+			<!-- HEADER CARD -->
+			<div class="col s12 m12 l4 push-l2">
+					
+					{% if length(coupleUpRequests.to) == 0 and length(coupleUpRequests.from) == 0 %}
+
+	  				{% include "new_request.twig.html"%}
+					
+    	    		{% elseif length(coupleUpRequests.to) == 0 and length(coupleUpRequests.from) != 0 %}
+
+						{% for request in coupleUpRequests.from %}
+									{% set type = "from" %}
+									{% include '../couple_up/request_from.twig.html' %}  
+								{% endfor %} 
+	
+					{% elseif length(coupleUpRequests.from) == 0 and length(coupleUpRequests.to) != 0 %}
+					
+    	    				{% include '../couple_up/request_to.twig.html' %}
+
+					
+					{% endif %}
+			</div>
+			
+  		
+  		</div>
+  	
+  	</div>
+
+</header>
+
+<div id="sheet">
+
+{% include "couple_up_actions.html" %}
+
+<div class="sheet_content container">
+	
+	<div class="row">
+		{% include "../index/howto.twig.html" %}
+		<!-- <div id="requestsFrom">
+			 {% for request in coupleUpRequests.from %}
+				{% set type = "from" %}
+				{% include "requests.twig.html" %}
+			{% endfor %}
+		</div>-->
+	</div>
+
+</div>
+
+</div>
+
+
+{% endblock %}

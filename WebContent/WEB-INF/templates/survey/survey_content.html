@@ -1,0 +1,22 @@
+<div id="surveyDiv">
+<form id="surveyForm">
+
+<ul class="collapsible">
+    {% for group in surveyOverview.groups %}
+		{% include "group.twig.html" %}
+	{% endfor %}
+  </ul>
+  
+</form>
+</div>
+
+<button id="saveAnswers" class="submitSurvey btn">Update Personality</button>
+
+<!-- 
+	Are there answering questions?
+<div id="splashScreen">
+	<h1 id="splashText">Answering Questions</h1>
+</div>
+
+ -->
+ 

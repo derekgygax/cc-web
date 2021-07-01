@@ -1,0 +1,63 @@
+
+			<label>{{ param.title }}</label>
+	<div class="input-field range-field">
+		<div id="range_{{ param.id }}{% if isModal %}_modal{%endif%}" class="sliders" data-paramid="{{ param.id }}"></div>
+		<input type="hidden" name="{{param.id}}"/>
+	</div>
+
+{% if parameters %}
+{% if parameters[param.id] %}
+{% set value = parameters[param.id] %}
+{% set parameterRange = value|split(",") %}
+<script>
+noUiSlider.create(document.getElementById("range_{{ param.id }}{% if isModal %}_modal{%endif%}"), {
+	start: [{{parameterRange[0]}}, {{parameterRange[1]}}],
+    connect: true, 
+    tooltips: true,
+    step: 1,
+    orientation: "horizontal",
+    range: {
+      'min': {{ param.min }},
+      'max': {{ param.max }}
+    },
+    format: wNumb({
+    	decimals: 0
+    })
+ });
+</script>
+{% else %}
+<script>
+noUiSlider.create(document.getElementById("range_{{ param.id }}{% if isModal %}_modal{%endif%}"), {
+	start: [{{ param.min }}, {{ param.max }}],
+    connect: true,
+    tooltips: true,
+    step: 1,
+    orientation: "horizontal",
+    range: {
+      'min': {{ param.min }},
+      'max': {{ param.max }}
+    },
+    format: wNumb({
+    	decimals: 0
+    })
+ });
+</script>
+{% endif %}
+{% else %}
+<script>
+noUiSlider.create(document.getElementById("range_{{ param.id }}{% if isModal %}_modal{%endif%}"), {
+	start: [{{ param.min }}, {{ param.max }}],
+    connect: true,
+    tooltips: true,
+    step: 1,
+    orientation: "horizontal",
+    range: {
+      'min': {{ param.min }},
+      'max': {{ param.max }}
+    },
+    format: wNumb({
+    	decimals: 0
+    })
+ });
+</script>
+{% endif %}

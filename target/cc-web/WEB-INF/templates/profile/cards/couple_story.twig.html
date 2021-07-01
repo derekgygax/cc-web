@@ -1,0 +1,22 @@
+<div class="couple_story_card">
+	<div class="card">
+  		<div class="card_title">
+			<img src="/cc-web/img/avatar.png" width="32px" height="32px" class="responsive-img" />
+  			<span>{{ partnerHigher.firstName }} & {{partnerLower.firstName}}'s Story</span>
+  		</div>
+  		<div class="card_content">
+  			<div class="couple_story">
+  			{% if couple.story %}
+  			  		{{ couple.story }}
+  			
+  			{% else %}
+  			<div class="emptyStory">
+  			  		<span>I'm sorry it looks like your couple story is empty. Why don't you update your couple profile?</span>
+  					<a href="/cc-web/couple/update" class="btn light-blue">Update Couple Profile</a>
+  			</div>
+  			{% endif %}
+
+          	</div>
+  		</div>
+  	</div>
+</div>

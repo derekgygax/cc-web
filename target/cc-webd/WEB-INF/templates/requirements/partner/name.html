@@ -1,0 +1,30 @@
+<div class="card">
+	<div class="card_title">
+		<span>What's your name?</span>
+		<i class="material-icons">group_add</i>
+	</div>
+	<div class="card-content">
+		<div class="row">
+			{% if partnerRequirements.name.firstName %}
+				<div class="input-field col s12 m12 l5">
+					<input id="firstName" name="firstName" type="text" value="{{ homePartner.firstName }}" />
+					<label class="inputRequired">First Name:</label>
+				</div>
+			{% else %}
+				<input name="firstName" type="hidden" value="{{ homePartner.firstName }}" />
+			{% endif %}
+			
+			<input name="middleName" type="hidden" value="{{ homePartner.middleName }}" />
+			
+			{% if partnerRequirements.name.lastName %} 
+				<div class="input-field col s12 m12 l5" >
+					<input id="lastName" name="lastName" type="text" value="{{ homePartner.lastName }}" />
+					<label class="inputRequired">Last Name:</label>
+				</div>
+			{% else %}
+				<input id="lastName" type="hidden" value="{{ homePartner.lastName }}" />
+			{% endif %}
+			<button type="submit" class="btn light-blue right">Save</button>
+		</div>
+	</div>
+</div>

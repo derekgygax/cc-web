@@ -1,0 +1,47 @@
+<div class="card">
+<div class="card-title">
+  	<i class="material-icons">account_circle</i>
+
+  	<span>Get Started Now!</span>
+</div>
+<div class="card-content">
+<form class="createAccountForm">
+   <div class="row">
+     <div class="input-field col s12">
+       <input id="createAccountemailAddress_higher" name="emailAddress_higher" type="text" class="validate">
+       <label for="createAccountemailAddress_higher">Email Address</label>
+       <span class="active helper-text" data-error="" data-success=""></span>
+       
+     </div>
+   </div>
+   <div class="row">
+	{% set account = "higher" %}
+	{% include 'partner.html' %}
+	{% set account = "lower" %}
+	{% include 'partner.html' %}
+   </div>
+   <div class="row">
+     <div class="input-field col s6">
+       <input id="createAccountpassword_higher" name="password_higher" type="password" class="validate">
+       <label for="createAccountpassword_higher">Password</label>
+       <span class="active helper-text" data-error="" data-success=""></span>
+       
+     </div>
+     <div class="input-field col s6">
+       <input id="createAccountpasswordConfirm_higher" name="passwordConfirm_higher" type="password" class="validate">
+       <label for="createAccountpasswordConfirm_higher">Confirm Password</label>
+     </div>
+   </div>
+
+ </div>
+ 
+
+<div class="card-action">
+   	 <input type="submit" id="createAccountsubmitbutton" class="submit_get_started btn light-blue" value="CREATE ACCOUNT" />
+   	 <a class="helpPageLink" href="/help">Need Help?</a>
+   	 
+   	 <span class="tosLink">By creating an account you agree to our <a href="/policies">privacy policy and terms of use</a></span>
+</div>
+
+ </form>
+</div>

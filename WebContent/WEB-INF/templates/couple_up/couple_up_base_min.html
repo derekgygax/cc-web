@@ -1,0 +1,28 @@
+    			<div class="col s6">
+    			
+    				{% if length(coupleUpRequests.to) == 0 and length(coupleUpRequests.from) == 0 %}
+    	    			{% include '../couple_up/new_request.twig.html' %}    
+    	    		<!-- Do we have FROM requests? -->
+    	    		{% elseif length(coupleUpRequests.to) == 0 and length(coupleUpRequests.from) != 0 %}
+    	    		<!-- <div class="new_request_handler no-padding-left">
+    	    				{% include '../couple_up/new_request.twig.html' %}    
+    	    			</div>-->
+
+								{% for request in coupleUpRequests.from %}
+									{% set type = "from" %}
+									{% include '../couple_up/request_from.twig.html' %}  
+								{% endfor %} 
+
+    	    		
+    	    		<!-- Do we have TO requests? -->
+    	    		{% elseif length(coupleUpRequests.from) == 0 and length(coupleUpRequests.to) != 0 %}
+
+    	    				{% include '../couple_up/request_to.twig.html' %}
+
+						
+					{% else %}
+
+    	    			{% include '../couple_up/request_to.twig.html' %}
+
+    	    		{% endif %}
+    			</div>

@@ -1,0 +1,40 @@
+  <div id="update_couple_modal" class="modal">
+    <div class="modal-content">
+      <h4 class="center-align">Update Profile</h4>
+      <h2>{{ partnerHigher.firstName }} & {{ partnerLower.firstName }}</h2>
+      {% include "update_couple_location.twig.html" %}
+<form id="updateCoupleForm">
+<!-- 	Dont put double quotes around couple.location. It will break it -->
+	<input type="hidden" name="location" value={{ couple.location }}>
+	<div class="row">
+		<div class="input-field col s12">
+			<input name="numChildren" type="text" value="{{ couple.numChildren }}" required>
+			<label class="inputRequired">Number of Children</label>
+		</div>
+	</div>
+	<div id="categoricalQuestions">
+	{% for question in categoricalCoupleQuestions %}
+		{% set choiceMade = couple[question.id] %}
+		{% include "../categorical_questions/categorical_question.twig.html" %}
+	{% endfor %}
+	</div>
+	<div class="row">
+		<div class="input-field col s12">
+			<textarea name="story" >{{ couple.story }}</textarea>
+			<label class="inputRequired">Your story:</label>
+		</div>
+	</div>
+
+
+
+<div class="col s12 center-align">
+	<button type="submit" class="modal-close btn col s12 light-blue" />Update Couple</button>
+	</div>
+
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+    </form>
+    
+  </div>

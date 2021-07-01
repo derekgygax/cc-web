@@ -1,0 +1,245 @@
+{% extends "../base.twig.html" %}
+
+{% block content %}
+
+<header>
+
+	<div class="container">
+		
+		<div class="row">
+		
+			<div class="col s12 m12 l4">
+			
+				<div class="header-partner-profile">
+				
+					<div class="header-partner-img">
+					{% set img = {'large': '/cc-web/img/avatar.png'} %}
+					{% if homeCouple != null %}
+						{% set img = homeCouple.profilePictures[0] %}
+					{% endif %}	
+						<img id="profilePic" style="background-image: url({{img.large}}); 
+				   		 {% if homeCouple.coupleId != couple.coupleId %}
+				   		 	border: 5px solid #bdbdbd  ;
+				   		 {% endif %}
+						"> <!--  end img -->
+						{% if homeCouple != null and homeCouple.coupleId == couple.coupleId %}
+						<a class="modal-trigger addProfilePicture btn-floating btn-large waves-effect waves-light light-blue" href="#upload_profile_pic"><i class="material-icons">add_a_photo</i></a>
+						{% endif %}
+					</div>
+				
+				    <div class="header-partner-name">
+				    	{% if userInCouple == true %}
+				    		{{ partnerHigher.firstName }} & {{ partnerLower.firstName }}
+				    	{% else %}
+				    		{{ homePartner.firstName }} {{ homePartner.lastName }}
+				    	{% endif %}
+				    	
+				    	{% if homeCouple.coupleId != couple.coupleId %}	
+		
+				    		<span class="header-partner-ages">Ages {{partnerHigher.age}} & {{partnerLower.age}}</span>
+				    	{% endif %}
+				    </div>
+				    
+				    {% if homeCouple.coupleId == couple.coupleId %}
+				   
+				    <div class="header-stats">
+				    	{% if homeCouple != null %}
+						<a href="/cc-web/recommended_couples" class="header-stat col s4">
+							<div>
+								<i class="material-icons">recent_actors</i>
+							</div>
+							<span>browse couples</span>
+						</a>
+						{% else %}
+						<a href="/cc-web/profile/update" class="header-stat col s4">
+							<div>
+								<i class="material-icons">edit</i>
+							</div>
+							<span>update profile</span>
+						</a>
+						{% endif %}
+						{% if homeCouple != null %}
+						<a href="/cc-web/matches" class="header-stat col s4">
+							<div>
+								<i class="material-icons">group_add</i>
+							</div>
+							<span>matches</span>
+						</a>
+						{% else %}
+						<a href="/cc-web/couple_up" class="header-stat col s4">
+							<div>
+								<i class="material-icons">group_add</i>
+							</div>
+							<span>couple up</span>
+						{% endif %}
+						{% if homeCouple != null %}
+						<a href="/cc-web/chat" class="header-stat col s4">
+							<div>
+								<i class="material-icons">message</i>
+							</div>
+							<span>messages</span>
+						</a>
+						{% else %}
+						<a href="/cc-web/survey" class="header-stat col s4">
+							<div>
+								<i class="material-icons">portrait</i>
+							</div>
+							<span>take survey</span>
+						</a>
+						{% endif %}
+						
+				    </div>
+					{% endif %}
+					{% if homeCouple.coupleId != couple.coupleId %}
+						<div class="away-couple-actions recommended_couple_card" data-coupleid="{{couple.coupleId}}">
+							<input type="hidden" id="nextRecommenedCouple" data-coupleid="{{nextRecommendedCouple}}">
+							<div><a class="btn left recommended_approve light-blue" href="#" data-value="approve"><span>Approve</span></a></div>
+							<div><a class="btn right recommended_approve light-blue" href="#" data-value="decline"><span>Pass</span></a></div>
+						</div>
+						<script src="js/recommended-couples.js"></script>
+						
+					{% endif %}
+				    
+				</div>
+				
+			</div>
+			
+			<!-- HEADER CONTENT--> 
+			<div class="col s12 m12 l8">
+			
+				<div class="header-content hide-on-med-and-down">
+					{% if homeCouple != null and homeCouple.coupleId == couple.coupleId %}
+						{% if userInCouple == true %}
+							<h1>Welcome to your profile, {{ partnerHigher.firstName }} and {{ partnerLower.firstName }}</h1>
+				    	{% else %}
+							<h1>Welcome to your profile, {{ partner.firstName }}</h1>
+				    	{% endif %}
+				    {% else %}
+				    	{% if partnerHigher %} 
+				 		<h1>Welcome to {{ partnerHigher.firstName }} & {{ partnerLower.firstName }}'s Profile</h1>
+				 		{% else %}
+				 									<h1>Welcome to your profile, {{ partner.firstName }}</h1>
+				 		
+				 		{% endif %}
+				    {% endif %}
+				</div>
+			
+			</div>
+			
+			<!-- HEADER CARD -->
+			{% if homeCouple != null and homeCouple.coupleId == couple.coupleId %}
+<div class="col s12 m12 l4 push-l2">
+				<div class="card">
+					<div class="card-title">
+						This is your couple profile!
+					</div>
+					{% if homePartner.readyToMingle %}
+					<div class="card-content">
+						<p>This is what other couples will see about you. Click Update Profile, Update Couple, or Upload Photos to change what others will see</p>
+					</div>					
+					{% else %}
+					<div class="card-content">
+						<p>It looks like there is some missing information about your couple. Why don't you visit the requirement page
+						to see what you still have to do?</p>
+					</div>
+					<div class="card-action">
+						<a class="btn light-blue" style="color: inherit" href="/cc-web/requirements">See the Requirements</a>
+					</div>
+					{% endif %}
+				</div>
+			</div>
+			{% else %}
+				{% if homeCouple != null %}
+			<div class="col s12 m12 l4 push-l2">
+				<div class="card">
+					<div class="card-title">
+						Recommended Couples
+					</div>
+					<div class="card-content">
+						<p>This is one of your recommended matches, view their profile and see if your partner likes them as well. That's how you
+						start messaging!</p>
+					</div>
+					<div class="card-action">
+						<a class="btn light-blue" href="/cc-web/recommended_couples">More Recommended Couples</a>
+					</div>
+				</div>
+			</div>
+		
+				{% else %}
+					<div class="col s12 m12 l4 push-l2">
+					{% include 'cards/welcome.twig.html' %}
+					</div>
+				{% endif %}
+			{% endif %}
+		</div>
+		
+	</div>
+	
+</header>
+{% include 'profile_actions.twig.html' %}
+<div id="sheet">
+	<!-- 
+	{% include 'profile_actions.twig.html' %}
+  	-->
+	<div class="sheet_content container">
+
+	{% if homeCouple != null and couple.coupleId != null %}
+	<div class="row">
+		<div class="same-height">
+		<div class="col s12 m12 l6">
+		  {% include 'cards/couple_story.twig.html' %}
+		</div>
+		<div class="col s12 m12 l6">
+  		{% include 'cards/couple_details.twig.html' %}
+  		</div>
+		</div>
+		<div class="col s12">
+  		{% include 'cards/couple_album.twig.html' %}
+  		</div>
+  	</div>	
+    {% else %}
+    	
+    	<div class="row">
+    	
+			{% include "../couple_up/couple_up_base_min.html"  %}   	    	
+    	    	<form id="updatePartnerForm" method="POST">
+    	    	<div class="row">
+	    	    	<div class="col s12 m12 l6">
+	    	    		
+		    	    	<div class="col s12">
+			    	    	<div class="row">
+			    	    		{% include '../update_partner/cards/partner_name.twig.html' %}
+			    	    	</div>
+		    	    		<div class="row">
+    	    					{% include '../update_partner/cards/partner_age.twig.html' %}
+    	    				</div>
+
+		    	    	</div>
+	    	    	
+	    	    	</div>
+	    	    	
+	    	    	<div class="col s12 m12 l6">
+	    	    		<div class="col s12">
+	    	    		
+	    	    		<div class="row">
+		    	    		{% include '../update_partner/cards/partner_questions.twig.html' %}
+		    	    	</div>
+	    	
+		    	    	</div>
+	    	    	</div>
+    	    	</div>
+    	    	</form>
+    	    	
+    	    	
+    	</div>
+    	
+    {% endif %}
+  	</div>
+  	
+</div>
+
+
+{% include '../images/upload_profile_pic_modal.twig.html' %}
+{% include '../update_partner/update_partner_modal.twig.html' %}
+{% include '../update_couple/update_couple_modal.twig.html' %}
+{% endblock %}

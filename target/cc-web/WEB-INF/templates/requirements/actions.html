@@ -1,0 +1,14 @@
+<div class="row profile_actions_container">
+  		<ul class="profile_actions">
+  			{% include "../action_bar/back_to_profile.html" %}
+  			
+  			{% if homeCouple != null and homeCouple.coupleId != null %}
+  				{% include "../action_bar/update_couple.html" %}
+  			{% else %}
+	  			{% include "../action_bar/couple_up.html" %}
+  			{% endif %}
+  			
+  			{% include "../action_bar/update_profile.html" %}
+  			{% include "../action_bar/update_personality.html" %}
+  		</ul>
+  	</div>

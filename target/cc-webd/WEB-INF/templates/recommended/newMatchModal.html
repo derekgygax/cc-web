@@ -1,0 +1,29 @@
+  <div id="newMatchModal" class="modal">
+  	<form class="sendFutureMessageForm">
+  		<input type="hidden" name="homeCoupleId" value="{{homeCouple.coupleId}}" />
+  		<input type="hidden" name="awayCoupleId" value="" />
+  		
+  		<input type="hidden" name="higherPartnerFirstName" value="" />
+  		<input type="hidden" name="lowerPartnerFirstName" value="" />
+  		<input type="hidden" name="higherPartnerId" value="" />
+  		<input type="hidden" name="lowerPartnerId" value="" />
+  		
+  		<input type="hidden" name="homePartnerFirstName" value="{{homePartner.firstName}}" />
+  		<input type="hidden" name="awayPartnerFirstName" value="{{awayPartner.firstName}}" />
+  		<input type="hidden" name="homePartnerId" value="{{homePartner.partnerId}}" />
+  		<input type="hidden" name="awayPartnerId" value="{{awayPartner.partnerId}}" />
+  		
+		<input type="hidden" name="roomid" value="{{ roomId }}">
+    <div class="modal-content">
+      <h4>You and {{awayPartner.firstName}} liked this couple! Do you want to send a message?</h4>
+		<div class="card-actions chat_action">
+			<input type="text" name="message" placeholder="Please input your message" class="chat_message_input">
+			<button class="btn modal-close light-blue right" type="submit"><i class="material-icons">send</i></button>
+		</div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close btn light-blue">No Thanks, Close</a>
+    </div>
+    	</form>
+    
+  </div>

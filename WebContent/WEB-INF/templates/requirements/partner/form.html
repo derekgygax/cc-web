@@ -1,0 +1,55 @@
+{% set homePartner = homePartner.getAsHashObject() %}
+{% set partnerRequirements = homePartner.updatesNeeded.partner %}
+{% set categoricalQuestions = partnerCategoricalQuestions %}
+<div class="sheet_content container">
+	<div class="row">
+		<form id="updatePartnerForm" data-partnerid="{{ homePartner.partnerId }}">
+			<div class="row">
+				<div class="col s12 m12 l6">
+					 <div class="col s12">
+						{% if partnerRequirements.name %}
+							<div class="row">
+								{% include 'name.html' %}
+							</div>
+						{% else %}
+							<input name="firstName" type="hidden" value="{{ homePartner.firstName }}" />
+							<input name="middleName" type="hidden" value="{{ homePartner.middleName }}" />
+							<input name="lastName" type="hidden" value="{{ homePartner.lastName }}" />
+						{% endif %}
+						{% if partnerRequirements.age %}
+							<div class="row">
+								{% include 'age.html' %}
+							</div>
+						{% else %}
+							<input name="age" type="hidden" value="{{homePartner.age}}" />
+						{% endif %}
+					</div>
+				</div>
+				{% if partnerRequirements.categoricalQuestions %}
+				{% if partnerRequirements.age %}
+				<div class="col s12 m12 l6">
+					<div class="col s12">
+						<div class="row">
+							{% include 'categorical_questions_wrapper.html' %}
+						</div>
+					</div>
+				</div>
+				{% else %}
+				<div class="col s12 m12 l12">
+					<div class="col s12">
+						<div class="row">
+							{% include 'categorical_questions_wrapper.html' %}
+						</div>
+					</div>
+				</div>
+				{% endif %}
+				
+				{% else %}
+					{% include 'categorical_questions_looper.html' %}
+				{% endif %}
+			</div>
+		</form>
+	</div>
+</div>
+
+<script src="/js/updatePartner.js"></script>

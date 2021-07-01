@@ -1,0 +1,75 @@
+nav {
+	background: #24305e;
+	border-bottom: 2px solid #a8d0e6;
+}
+
+.nav-wrapper {
+	padding: 0 64px;
+}
+
+nav ul a {
+	padding: 0 15px;
+}
+
+nav img {
+	vertical-align: middle;
+	margin-top: -6px; /* HACKY: Readjust to middle */
+}
+
+nav .text_links a {
+	color: #c6dafc;
+	font-weight: bold;
+	box-sizing:inherit;
+}
+
+nav .text_links a.active {
+	border-bottom: 2px solid rgb(151,187,207);
+	margin-top: -2px;
+	background: rgb(32,43,84);
+	color: #fff;
+}
+
+nav .text_links a:hover {
+	color: #fff;
+}
+
+/* DROPDOWN CSS */
+#profile_dropdown {
+	margin-top: 64px;
+	top: 0px !important;
+}
+
+#profile_dropdown a {
+	color: #333;	
+}
+
+#profile_dropdown a:hover {
+	color: #03a9f4;	
+	background: #eee;
+}
+
+
+/* BREAKPOINT CSS */
+/* PHONE */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px) {
+
+	nav .nav-wrapper {
+		padding: 0 !important;
+	}
+	nav ul a {
+		padding: 0 8px !important;
+	}
+}
+
+
+/* TABLET */
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+  
+
+	
+}

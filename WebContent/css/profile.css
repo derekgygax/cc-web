@@ -1,0 +1,64 @@
+body{
+	height: 100%;
+}
+
+#splashScreen{
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #828282;
+	height: 100%;
+	width: 100%;
+	opacity: 0.3;
+	display: none;
+}
+
+#requestCoupleDiv{
+	height: 60%;
+}
+
+#requestCoupleDiv h3{
+	margin: 0px;
+}
+
+.requestAwayPartner{
+	display: inline-block;
+}
+
+.requestsDiv {
+	display: none;
+}
+
+#apInput{
+	border: 1px solid grey;
+}
+#sentRequest{
+	display: none;
+}
+
+#closeCoupleUp{
+	margin-top: 5px;
+}
+
+#mesagesLinkNo {
+	display: none;
+}
+
+#recommendedCouplesLinkNo {
+	display: none;
+}
+
+#searchLinkNo {
+	display: none;
+}
+
+.psuedoDisabled {
+  color: currentColor;
+  cursor: not-allowed;
+  opacity: 0.5;
+  text-decoration: none;
+}
+
+
+
+

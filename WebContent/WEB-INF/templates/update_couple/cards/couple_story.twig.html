@@ -1,0 +1,17 @@
+
+	<div class="card">
+  		<div class="card_title">
+  			<img src="/img/avatar.png" width="32px" height="32px" class="responsive-img" />
+  			<span>{{ partnerLower.firstName }} & {{partnerHigher.firstName}}'s Story</span>
+  			<i class="material-icons">edit</i>
+  		</div>
+  		<div class="card-content">
+			<div class="row">
+				<div class="input-field col s12">
+					<textarea class="couplesStoryTextArea materialize-textarea" data-location={{couple.location}} name="story">{{ couple.story }}</textarea>
+					<label class="inputRequired">Your story:</label>
+				</div>
+				<button type="submit" class="btn light-blue right">Save</button>
+			</div>
+  		</div>
+  	</div>

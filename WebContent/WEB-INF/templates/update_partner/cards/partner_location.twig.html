@@ -1,0 +1,44 @@
+				<div class="card">
+					<div class="card_title">
+						<span>Where do you live?</span>
+						<i class="material-icons">group_add</i>
+					</div>
+					<div class="card-content">
+						<div class="row">
+
+			<div class="input-field col s12">
+				<input id="address" name="address" type="text" value="{{ partner.address }}">
+				<label>Address: </label>
+			</div>
+
+
+			<div class="input-field col s12">
+				<input id="city" name="city" type="text" value="{{ partner.city }}">
+				<label>City: </label>
+			</div>
+
+
+			<div class="input-field col s12">
+				<!-- The show_select class below is because materialize hides selects by default -->
+				<select id="state" name="state">
+					<option value=" "> Select State</option>
+					{% for state, abrv in unitedStates %}
+					<option value="{{ abrv }}" 
+					{% if (partner.state == abrv) %}
+					selected
+					{% endif %}
+					>{{state}}</option>
+					{% endfor %}
+				</select>
+				<label>State: </label>
+			</div>
+
+			<div class="input-field col s12">
+				<input id="zipcode" name="zipcode" type="text" value="{{ partner.zipcode }}">
+				<label class="inputRequired">Zip Code:</label>
+			</div>
+
+						<button type="submit" class="btn light-blue right">Save</button>
+						</div>
+					</div>
+				</div>

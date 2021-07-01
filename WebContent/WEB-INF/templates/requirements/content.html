@@ -1,0 +1,47 @@
+<div id="requirements">
+{% if (homePartner.verifiedEmail == 1 or awayPartner.verifiedEmail == 1) %}
+
+{% if homePartner.updatesNeeded %}
+
+	{% if homePartner.updatesNeeded.partner %}
+		<!-- First Stage: Lets get them warmed up by updating profile -->
+		{% include "partner/form.html" %}
+	{% else %}
+	
+		{% if homePartner.updatesNeeded.survey %}
+			<!-- Second Stage: Survey -->
+			{% include "../survey/survey_content.html" %}
+		
+		{% else %}
+			
+			{% if homeCouple == null %}
+				<!-- Third Stage: Create a couple -->
+				{% include "../couple_up/no_couple.html"  %}   
+			{% else %}
+			
+				<!-- Fourth Stage: Update their couple profile -->
+				{% if homePartner.updatesNeeded.couple %}
+					{% include "couple/base.html" %}
+				{% endif %}
+			{% endif %}
+		
+		{% endif %}
+	
+	{% endif %}
+	
+{% else %}
+
+	{% if homePartner.verifiedEmail == 0 %}
+		{% include "partner/email_verification.html" %}
+	{% endif %}
+
+{% endif %}
+
+
+{% else %}
+
+
+{% include 'partner/email_verification.html' %}
+
+{% endif %}
+</div>

@@ -1,0 +1,7 @@
+{% set coupleRequirements = homePartner.updatesNeeded.couple %}
+{% set categoricalQuestions = coupleCategoricalQuestions %}
+{% if homePartner.updatesNeeded.couple.profilePic %}
+	{% include "upload_profile_pic.html" %}
+{% else %}
+	{% include "form.html" %}
+{% endif %}

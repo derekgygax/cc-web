@@ -1,0 +1,216 @@
+{% extends '../base.twig.html' %}
+
+{% block content %}
+
+<header>
+
+	<div class="container">
+		
+		<div class="row">
+
+			<div class="col s12 m12 l4">
+			
+				<div class="header-partner-profile">
+				
+					<div class="header-partner-img">
+					{% set img = {'large': '/cc-web/img/avatar.png'} %}
+					{% if homeCouple != null %}
+						{% set img = homeCouple.profilePictures[0] %}
+					{% endif %}	
+						<img id="profilePic" style="background-image: url({{img.large}}); 
+				   		 {% if homeCouple.coupleId != couple.coupleId %}
+				   		 	
+				   		 {% endif %}
+						"> <!--  end img -->
+						{% if homeCouple != null and homeCouple.coupleId == couple.coupleId %}
+						<a class="modal-trigger addProfilePicture btn-floating btn-large waves-effect waves-light light-blue" href="#upload_profile_pic"><i class="material-icons">add_a_photo</i></a>
+						{% endif %}
+					</div>
+				
+				    <div class="header-partner-name">
+				    	{% if userInCouple == true %}
+				    		{{ homePartner.firstName }} & {{ awayPartner.firstName }}
+				    	{% else %}
+				    		{{ partner.firstName }} {{ partner.lastName }}
+				    	{% endif %}
+				    </div>
+				    
+
+				   
+				    <div class="header-stats">
+				    	{% if homeCouple != null %}
+						<a href="/cc-web/recommended_couples" class="header-stat col s4">
+							<div>
+								<i class="material-icons">recent_actors</i>
+							</div>
+							<span>browse couples</span>
+						</a>
+						{% else %}
+						<a href="/cc-web/profile/update" class="header-stat col s4">
+							<div>
+								<i class="material-icons">edit</i>
+							</div>
+							<span>update profile</span>
+						</a>
+						{% endif %}
+						{% if homeCouple != null %}
+						<a href="/cc-web/matches" class="header-stat col s4">
+							<div>
+								<i class="material-icons">group_add</i>
+							</div>
+							<span>matches</span>
+						</a>
+						{% else %}
+						<a href="/cc-web/couple_up" class="header-stat col s4">
+							<div>
+								<i class="material-icons">group_add</i>
+							</div>
+							<span>couple up</span>
+						{% endif %}
+						<a href="/cc-web/chat" class="header-stat col s4">
+							<div>
+								<i class="material-icons">message</i>
+							</div>
+							<span>messages</span>
+						</a>
+				    </div>
+
+				    
+				</div>
+				
+			</div>
+			
+			<!-- HEADER CONTENT--> 
+			<div class="col s12 m12 l8">
+			
+				<div class="header-content hide-on-med-and-down">
+					<h1>Here are the couples you matched with {{homePartner.firstName}} & {{awayPartner.firstName}}</h1>
+				</div>
+			
+			</div>
+			
+			<!-- HEADER CARD -->
+			<div class="col s12 m12 l4 push-l2">
+				<div class="card">
+					<div class="card-title">
+						Recent Matches
+					</div>
+					<div class="card-content">
+						<p>Here is a list of your recent matches, we should probably encourage the user somewhere too</p>
+					</div>
+					<div class="card-action">
+						<a class="btn light-blue" href="/cc-web/recommended_couples">Browse Recommended Couples</a>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		
+	</div>
+	
+</header>
+  
+<div id="sheet">
+
+	<div class="row profile_actions_container">
+  		<ul class="profile_actions">
+  			{% include "../action_bar/back_to_profile.html" %}
+  				{% include "../action_bar/update_couple.html" %}
+
+  			
+  			{% include "../action_bar/update_personality.html" %}
+  			{% if homeCouple != null and homeCouple.coupleId != null %}
+	  			{% include "../action_bar/upload_images.html" %}
+  			{% else %}
+  				{% set greyOut = true %}
+  				{% include "../action_bar/upload_images.html" %}
+  			{% endif %}
+  		</ul>
+  	</div>
+
+<!--
+MATCHES:
+ : prioritized by couple algorithm ranking
+ : couple name, couple relationship type, couple # of children, 
+ : statuses: how long ago: did they match? last message? 
+ : messaging: need to get them chatting ASAP
+ 	: OKC / FB have the chat box pop up at the bottom.
+ 	: whenever you click a match you, a popup at the bottom happens
+ 	: 
+
+
+ -->
+
+
+
+	<div class="sheet_content container">
+		
+		<div class="row">
+		<div id="matchesList"
+			data-homepartnername="{{ homePartner.firstName }}"
+			data-homepartnerid="{{ homePartner.partnerId }}"
+			data-awaypartnername="{{ awayPartner.firstName }}"
+			data-awaypartnerid="{{ awayPartner.partnerId }}">
+		{% if length(allMatches) != 0 %}
+			{% for match in allMatches %}
+				{% set couple = match.couple %}
+				<a href="/cc-web/profile?couple={{ couple.coupleId }}">{% include "couple.twig.html" %}</a>
+			{% endfor %}
+		{% else %}
+			<h2>You don't have any matches yet.</h2>
+			<h3>Start approving people in your recommended matches list :)</h3>
+			<a href="/cc-web/recommended_couples">
+				<button>Recommended Matches</button>
+			</a>
+		{% endif %}
+	</div>
+			<div id="couple_matches">
+			
+				
+				
+			</div>
+		
+		</div>
+		
+	</div>
+	
+	
+	<!-- 
+	
+	desktop chatting, possibly accessible from everywhere?
+	border-outline will be status indicator.
+	blue border = new activity
+	red = sonething wrong
+	normal = no new activity
+	
+	 -->
+	<div class="couple_matches_chat_container">
+
+		
+<!-- 		<div class="couple_chat z-depth-1"> -->
+<!-- 			<div class="couple_chat_minimized"> -->
+<!-- 				<img class="couple_chat_avatar" src="/cc-web/img/avatar.png" /> -->
+<!-- 				<span>Partner 1 & Partner 2</span> -->
+<!-- 				<div class="couple_chat_actions right"> -->
+<!-- 					<i class="material-icons">close</i> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			<div class="couple_chat_maximized"> -->
+<!-- 				<div class="couple_chat_no_history"> -->
+<!-- 					It looks like no one has sent a message yet. Be the first! -->
+<!-- 				</div> -->
+<!-- 				<div class="couple_chat_textarea"> -->
+<!-- 					<textarea placeholder="Write Partner 1 and Partner 2 a message..."> -->
+					
+<!-- 					</textarea> -->
+<!-- 					<button class="btn light-blue right">Send Message</button> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+		
+	</div>
+
+</div>
+<script src="js/matches.js"></script>
+<script src="js/chat.js"></script>
+{% endblock %}

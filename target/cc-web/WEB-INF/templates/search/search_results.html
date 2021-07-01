@@ -1,0 +1,15 @@
+{% if defined(searchResults) %}
+	{% if length(searchResults.couples) %}
+	<div class="row search_results_view">
+		<div class="marco col s12 m12 l12">
+			{% for couple in searchResults.couples %}
+				<div class="waldo col s12 m12 l4">
+				{% include "../recommended/couple.twig.html" %}
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+	{% else %}
+	<h2 id="searchNoResults">Your search produced no results.</h2>
+	{% endif %}
+{% endif %}

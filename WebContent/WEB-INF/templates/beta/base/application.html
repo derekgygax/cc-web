@@ -1,0 +1,61 @@
+<application id="CouplesConnection">
+
+{% include 'nav/nav.html' %}
+
+{% block header %}
+	{% include 'header/header.html' %}
+{% endblock %}
+
+{% include 'actions/action_bar.html' %}
+
+<main>
+
+<ul id="tabs-swipe-demo" class="tabs">
+<li class="tab col s3"><a class="active"  href="#swipe-1">Test 1</a></li>
+<li class="tab col s3"><a href="#swipe-2">Test 2</a></li>
+<li class="tab col s3"><a href="#swipe-3">Test 3</a></li>
+</ul>
+
+<div id="swipe-1" class="swipeable col s12 blue">
+
+<div class="card">
+
+	<div class="card-image" style="background-image: url('/img/photo2.jpg')">
+		<!-- <img src="/img/photo2.jpg" /> -->
+		<!-- <i class="card-image-border material-icons">wc</i>-->
+	</div>
+
+	<div class="card-content">
+		<span class="test-name">partnerHigher & partnerLower</span>
+		<span class="test-ages"'>ages 99 & 99</span>
+		<!--<span class="test-story show-on-medium">
+		Here is a wonderful story of one of our couples, and they wrote
+		about three sentences. Or maybe two sentences, who cares about Derek.
+		Ben, Gideon and I are going to migrate postgres.
+		</span>-->
+	</div>
+	
+	<div class="card-action">
+		<div><a class="btn blue left recommended_approve" href="#" data-value="approve">Approve</a></div>
+		<div><a class="btn blue right recommended_approve" href="#" data-value="decline">Pass</a></div>
+	</div>
+</div>
+
+
+</div>
+<div id="swipe-2" class="swipeable col s12 red">Second tab content</div>
+<div id="swipe-3" class="swipeable col s12 green">Third tab content</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $('ul.tabs').tabs({
+      swipeable : true,
+      responsiveThreshold : 1920
+    });
+  });
+</script>
+
+</main>
+
+
+</application>

@@ -1,0 +1,96 @@
+<div class="row">
+
+{% if homeCouple != null %}
+<div class="col s12 m12 l12">
+<div class="card partner_email_verified_card">
+	<div class="card_title">
+		<span>You must verify your email!</span>
+		<i class="material-icons">email</i>
+	</div>
+	<div class="card-content">
+	
+		<div>Please check your email account for an email verifying your account with us!</div>
+		<div>If you don't find the email within 1 min please check your spam folder or <a href="#contact" class="modal-trigger">click here to Contact Us</a>.</div>
+		<div class="email_verification_sendTo">
+		<span>We sent an email to:</span>
+		{% if homePartner.emailAddress %}
+			<p>{{homePartner.emailAddress}}</p>
+		{% else %}
+			<p>{{awayPartner.emailAddress}}</p>
+		{% endif %}
+		</div>
+		
+	</div>
+	<div class="card-actions" style="text-align: right">
+		<button type="submit" data-sendTo="{{homePartner.partnerId}}" class="resendVerifyEmail btn light-blue">Resend Verfication Email</button>	
+	</div>
+</div>
+</div>
+{% else %}
+
+<div class="col s12 m12 l12">
+<div class="card partner_email_verified_card">
+	<div class="card_title">
+		<span>You must verify your email!</span>
+		<i class="material-icons">email</i>
+	</div>
+	<div class="card-content">
+	
+		<div>Please check your email account for an email verifiying your account with us!</div>
+		<div>If you don't find the email within 1 min please check your spam folder or <a href="#contact" class="modal-trigger">click here to Contact Us</a>.</div>
+		<div class="email_verification_sendTo">
+		<span>We sent an email to:</span>
+		<p>{{homePartner.emailAddress}}</p>
+		</div>
+		
+	</div>
+	<div class="card-actions" style="text-align: right">
+		<button type="submit" data-sendTo="{{homePartner.partnerId}}" class="resendVerifyEmail btn light-blue">Resend Verfication Email</button>	
+	</div>
+</div>
+</div>
+
+{% endif %}
+</div>
+
+
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+	
+	$("body").on('click', '.resendVerifyEmail', function(){
+		var sendTo = $(this).attr('data-sendTo');
+		
+		$.ajax({
+		    type: "GET",
+		    url: "/verifyemail?resendEmail="+sendTo,
+		    success: function (response) { 
+		    	$(".resendVerifyEmail").text("Email Sent");
+		    	$(".resendVerifyEmail").addClass("disabled");
+		    }
+		});
+	});
+	
+	$("body").on('click', '.sendCoupleRequest', function(){
+		var sendTo = $("#couple_request_email").val();
+		var emailError = Partner.checkEmail(sendTo);
+		if (emailError){
+			var helperText = $("#couple_request_email").parent().find('.helper-text')[0];
+			$("#couple_request_email").addClass('invalid');
+			$(helperText).attr('data-error', emailError);
+			return false;
+		}
+		
+		$.ajax({
+		    type: "GET",
+		    url: "/verifyemail?sendCoupleRequest="+sendTo,
+		    success: function (response) { 
+		    	$(".sendCoupleRequest").text("Email Sent");
+		    	$(".sendCoupleRequest").addClass("disabled");
+		    }
+		});
+	});
+
+});
+</script>

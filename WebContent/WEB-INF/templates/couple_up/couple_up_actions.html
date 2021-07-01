@@ -1,0 +1,15 @@
+<div class="row profile_actions_container">
+  		<ul class="profile_actions">
+  			{% include "../action_bar/back_to_profile.html" %}
+  			
+ 			{% include "../action_bar/update_profile.html" %}
+  			
+  			{% include "../action_bar/update_personality.html" %}
+  			{% if homeCouple == null or homCouple.coupleId == null %}
+  				{% set greyOut = true %}
+  				{% include "../action_bar/upload_images.html" %}
+  			{% else %}
+	  			{% include "../action_bar/upload_images.html" %}
+  			{% endif %}
+  		</ul>
+  	</div>

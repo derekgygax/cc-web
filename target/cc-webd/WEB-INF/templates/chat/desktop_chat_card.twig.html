@@ -1,0 +1,26 @@
+{{ match.coupleApproveStatus }}
+<div class="card"  data-roomid="{{ roomId }}">
+		<form class="sendMessageForm">
+		<input type="hidden" name="roomid" value="{{ roomId }}">
+		<div class="card-title">
+			<i class="material-icons">message</i>
+			{{ matchHigherName }} & {{ matchLowerName }}
+			<a href="#"><i class="material-icons right">more_vert</i></a>
+		</div>
+				
+		<div id="messages-{{ roomId }}" class="card-content chat-content message_box"> 
+		</div>
+
+		<div class="card-actions chat_action">
+			<input type="text" name="message" placeholder="Why not introduce yourself? Remember they will see this message if they match you!" class="chat_message_input">
+			<button class="btn light-blue right" type="submit"><i class="material-icons">send</i></button>
+		</div>
+	</form>
+</div>
+<script>
+document.getElementById("messages-{{ roomId }}").addEventListener("scroll", function(){
+	$(this).trigger("getOldMsgs", {
+		"roomId": {{ roomId }}
+	});
+});
+</script>

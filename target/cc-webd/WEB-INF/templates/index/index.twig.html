@@ -1,0 +1,66 @@
+{% extends "../base.twig.html" %}
+
+{% block content %}
+
+<header>
+
+	<div class="container">
+		
+		<div class="row">
+		
+			<!-- PARTNER PROFILE -->
+			<!-- 
+			<div class="col s12">
+			<div class="header-partner-profile">
+				<div class="header-partner-img">
+					<img src="/cc-web/img/avatar.png">
+				</div>
+			    <div class="header-partner-name">
+			    	Lori Soft
+			    </div>
+			</div>
+			</div>
+			-->
+			<!-- COUPLE PROFILE -->
+			<div class="header-index col s12 no-padding">
+			<div class="col s12 m12 l5">
+				<div class="branding">
+					<div>2CouplesConnect</div>
+					<span>Real Friends, Real Fast</span>
+				</div>
+
+				<div class="card">
+
+					<div class="card-content branding-description">
+					<span>2CouplesConnect</span> is a site to help address the issue of couples going through life stage change events 
+such as -- relocating, getting married, having kids. <p>Where your existing friends are not the
+best fit anymore, or just to add to the existing orbit of friends. To find new couple friends -- 
+not his friends, not her friends -- but our friends, that can relate to our life stage.</p>
+Not a swingers site, but meant to find couples to hang out with that are on the same page as both of you.
+					</div>
+				</div>
+									{% include '../login/login.twig.html' %}
+				
+			</div>
+
+			<!-- HEADER CARD -->
+			<div class="col s12 m12 l6 push-xl1">
+					{% include '../create_account/create_account.twig.html' %}
+			</div>
+			</div>
+		</div>
+		
+	</div>
+	
+</header>
+	<div id="sheet">
+	<div class="sheet_content container">
+		{% include 'howto.twig.html' %}
+	</div>
+			
+</div>
+
+<!-- This is a silly way so we can ask the users off the very beginning to let us use their location -->
+<script src="js/createAccount.js"></script>
+
+{% endblock %}

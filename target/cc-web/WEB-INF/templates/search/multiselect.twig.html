@@ -1,0 +1,22 @@
+<div class="input-field">
+		<!-- The show_select class below is because materialize hides selects by default -->
+		<select name="{{ param.id }}" class="multiselect" multiple>
+			<option value="" disabled>Choose Multiple</option>
+			{% if parameters %}
+			
+				{% set value = parameters[param.id] %}
+				{% set paramList = value|split(",") %}
+				{% for option in param.values %}
+					<option value="{{ option }}" {% if option in paramList %} selected {% endif %}>{{ option }}</option>
+				{% endfor %}
+			
+			{% else %}
+			
+				{% for option in param.values %}
+					<option value="{{ option }}" {% if option in paramList %} selected {% endif %}>{{ option }}</option>
+				{% endfor %}
+			
+			{% endif %}
+		</select>
+		<label>{{ param.title }}</label>
+</div>

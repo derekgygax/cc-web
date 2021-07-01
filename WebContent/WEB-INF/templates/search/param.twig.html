@@ -1,0 +1,15 @@
+
+	{% if param.type == "singleselect" %}
+	<div class="param col s12 m12 l6">
+		{% include "singleselect.twig.html" %}
+	</div>
+	{% elseif param.type == "multiselect" %}
+	<div class="param col s12 m12 l6">
+		
+		{% include "multiselect.twig.html" %}
+	</div>
+	{% elseif param.type == "range" %}
+	<div class="param col s12 m12 l6 no-padding">
+		{% include "range.twig.html" %}
+	</div>
+	{% endif %}

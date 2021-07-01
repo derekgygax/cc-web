@@ -1,0 +1,52 @@
+<div id="createPartnerProfile" style="margin:0 auto;">
+	<div class="card">
+		<form id="createCoupleRequirementForm" method="POST" data-partnerid="{{ homePartner.partnerId }}">
+			<div class="card-title">
+				Create your Couple
+			</div>
+			<div class="card-content">
+	   	    	<div class="row">
+
+	   	    		<div class="input-field col s12 m12 l6">
+						<input id="createCoupleRequirementFirstName" class="updatePartnerfirstName" name="firstName" type="text" value="{{ awayPartner.firstName }}">
+						<label class="inputRequired">First Name:</label>
+						<span class="active helper-text" data-error=""></span>
+					</div>
+	
+					<div class="input-field col s12 m12 l6">
+						<input id="createCoupleRequirementLastName" class="updatePartnerlastName" name="lastName" type="text" value="{{ awayPartner.lastName }}">
+						<label class="inputRequired">Last Name:</label>
+						<span class="active helper-text" data-error=""></span>
+					</div>
+					
+					<div class="row">
+				     <div class="input-field col s6">
+						<input id="createCoupleRequirementAge" name="age" type="text" value="{{homePartner.age}}" data-error=""/>
+						<label>Age</label>
+						<span class="active helper-text" data-error=""></span>
+					</div>
+					<div class="input-field col s6">
+						<div class="input-field col s12" style="margin-top: 0px">
+							<select id="createCoupleRequirementGender" name="gender">
+								<option value="" disabled selected>What is your gender?</option>
+								<option value="Female">Female</option>
+								<option value="Male">Male</option>
+								<option value="Identify Other">Identify Other</option>
+							</select>
+							<label>What is your gender?</label>
+							<span class="active helper-text" data-error="" data-success=""></span>
+						</div>
+					</div>
+				     </div>
+	   	    	</div>
+			</div>
+			
+			<div class="card-actions" style="padding: 16px; text-align: center;">
+				<button type="submit" class="createCoupleRequirementFormButton btn light-blue">Create Couple</a>		
+			</div>
+		
+		</form>
+	</div>
+</div>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.js"></script>
+ <script src="/js/createAccount.js"></script>

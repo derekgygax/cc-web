@@ -1,0 +1,18 @@
+{% set partnerHigher = couple.partners[couple.partnerIdHigher] %}
+{% set partnerLower = couple.partners[couple.partnerIdLower] %}
+		
+  		{% include 'cards/couple_story.twig.html' %}
+  		
+  		<div class="row recommended_actions center-align">
+
+				<a href="/profile?couple={{couple.coupleId}}" class="btn blue">VIEW COUPLE PROFILE</a>
+				<a href="#" class="btn blue">SEND A MESSAGE</a>
+
+		</div>
+
+  		{% include 'cards/couple_details.twig.html' %}
+
+      	{% include 'cards/couple_album.twig.html' %}
+      	
+      	{% include 'cards/couple_actions.twig.html' %}
+ 

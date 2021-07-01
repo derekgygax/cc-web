@@ -1,0 +1,14 @@
+<div class="login-partner-wrapper">
+	<div class="login-partner" data-awaypartnerid="{{ partner.partnerId }}">
+		<i class="material-icons login-partner-square">account_circle</i>
+		<div class="login-partner-first-name">
+			{{partner.firstName}}
+		</div>
+	</div>
+	{% if partner.emailAddress == null %}
+		<div class="card-actions" style="padding: 16px; text-align: center;">
+			<button class="submitCreatePartnerEmail btn light-blue">Add Login</a>				
+		</div>
+	{% endif %}
+	
+</div>

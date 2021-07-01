@@ -1,0 +1,16 @@
+<div class="row">
+	<div class="input-field col s12">
+		<!-- The show_select class below is because materialize hides selects by default -->
+		<select id="{{ question.id }}" name="{{ question.id }}">
+			<option value="" disabled selected>{{question.text}}</option>
+			{% for option in question.choices %}
+				<option value="{{ option.text }}"
+				{% if (choiceMade == option.text) %}
+				selected
+				{% endif %}
+				>{{ option.text }}</option>
+			{% endfor %}
+		</select>
+		<label>{{ question.text }}</label>
+	</div>
+</div>

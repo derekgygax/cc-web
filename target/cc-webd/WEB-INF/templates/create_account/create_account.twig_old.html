@@ -1,0 +1,58 @@
+{% extends "../base.twig.html" %}
+
+{% block content %}
+
+<h1 class="textCenter">Sign Up for Couples Connection</h1>
+<div>
+	<div id="newUser" class="tableCenter">
+		<div>
+			<div class="inlineBlock">
+				<label class="inputRequired">Username:</label>
+			</div>
+			<div class="inlineBlock">
+				<input id="username" name="username" type="text" required="required">
+				<span id="username_error"></span>
+			</div>
+		</div>
+		<div>
+			<div class="inlineBlock">
+				<label class="inputRequired">Email:</label>
+			</div>
+			<div class="inlineBlock">
+				<input id="emailAddress" name="emailAddress" type="email" required="required">
+				<span id="emailAddress_error"></span>
+			</div>
+		</div>
+		<div>
+			<div class="inlineBlock">
+				<label class="inputRequired">Password:</label>
+			</div>
+			<div class="inlineBlock">
+				<input id="password" name="password" type="password" required="required">
+				<span id="password_error"></span>
+			</div>
+		</div>
+		<div>
+			<div class="inlineBlock">
+				<label class="inputRequired">Confirm Password:</label>
+			</div>
+			<div class="inlineBlock">
+				<input id="confirmPassword" name="confirmPassword" type="password" required="required">
+				<span id="confirmPassword_error"></span>
+			</div>
+		</div>
+	</div>
+	<div class="textCenter">
+		<div class="inlineBlock">
+			<button id="createButton">Sign Up</button>
+		</div>
+		<div class="inlineBlock">
+			<button id="cancelCreateButton">Cancel</button>
+		</div>
+	</div>
+</div>
+<span class="inputRequired">Required fields</span>
+
+<script src="js/createAccount.js"></script>
+
+{% endblock %}

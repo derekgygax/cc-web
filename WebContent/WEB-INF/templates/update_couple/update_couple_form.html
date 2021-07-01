@@ -1,0 +1,44 @@
+<form id="updateCoupleForm">
+	{% if needRequirements %}
+		{% if homePartner.updatesNeeded.couple.location %}
+			{% include "update_couple_location.twig.html" %}
+		{% endif %}
+	{% else %}
+		{% include "update_couple_location.twig.html" %}
+	{% endif %}
+<!-- 	Dont put double quotes around couple.location. It will break it -->
+	<input id="locationJson" type="hidden" name="location" value={{ couple.location }}>
+    	    	<div class="row">
+	    	    	<div class="col s12 m12 l6">
+	    	    		
+		    	    	<div class="col s12">
+			    	    	<div class="row" {% if needRequirements and defined(homePartner.updatesNeeded.couple.story)==false %} style="display:none;" {% endif %}>
+								{% include 'cards/couple_story.twig.html' %}
+								
+			    	    	</div>
+		    	    		<div class="row">
+								{% include 'cards/couple_details.twig.html' %}
+
+    	    				</div>
+    	    				<div class="row">
+
+    	    				</div>
+		    	    	</div>
+	    	    	
+	    	    	</div>
+	    	    	
+	    	    	<div class="col s12 m12 l6" {% if needRequirements and defined(homePartner.updatesNeeded.couple.categoricalQuestions)==false %} style="display:none;" {% endif %}>
+	    	    		<div class="col s12">
+	    	    		
+	    	    		<div class="row">
+								{% include 'cards/couple_categorical.twig.html' %}
+
+		    	    	</div>
+		    	    	<div class="row">
+
+	    	    		</div>
+	    	
+		    	    	</div>
+	    	    	</div>
+    	    	</div>
+    	    	</form>

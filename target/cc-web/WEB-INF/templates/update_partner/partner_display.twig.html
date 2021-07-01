@@ -1,0 +1,23 @@
+<div id="partner_display_{{ partner.partnerId }}">
+	<img class="person_icon responsive-img" src="/cc-web/img/avatar.png" />
+	<div class="person_info">
+		<span class="person_info_name">
+			{% if partner.firstName != null and partner.lastName != null %}
+				{{ partner.firstName }} {{ partner.lastName }}
+			{% else %}
+				{{ partner.username }}
+			{% endif %}
+		</span>
+		<span class="person_info_asl">
+			{% if partner.age != 0 or (partner.city != null and partner.state != null) %}
+				{{ partner.age }}, {{ partner.city }} {{ partner.state}}
+			{% else %}
+				{% if homePartner.partnerId == partner.partnerId %}
+					<a class="modal-trigger" href="#update_partner_modal">Update your Profile</a>
+				{% else %}
+					<span>Please ask your partner to update their profile</span>
+				{% endif %}
+			{% endif %}
+		</span>
+	</div>
+</div>

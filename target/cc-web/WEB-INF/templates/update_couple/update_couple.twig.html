@@ -1,0 +1,175 @@
+{% extends "../base.twig.html" %}
+
+{% block content %}
+
+<header>
+
+	<div class="container">
+		
+		<div class="row">
+		
+			<div class="col s12 m12 l4">
+			
+				<div class="header-partner-profile">
+				
+					<div class="header-partner-img">
+					{% set img = {'large': '/cc-web/img/avatar.png'} %}
+					{% if homeCouple != null %}
+						{% set img = homeCouple.profilePictures[0] %}
+					{% endif %}	
+						<img id="profilePic" style="background-image: url({{img.large}}); 
+				   		 {% if homeCouple.coupleId != couple.coupleId %}
+				   		 	border: 5px solid #ffd54f;
+				   		 {% endif %}
+						"> <!--  end img -->
+						{% if homeCouple != null and homeCouple.coupleId == couple.coupleId %}
+						<a class="modal-trigger addProfilePicture btn-floating btn-large waves-effect waves-light light-blue" href="#upload_profile_pic"><i class="material-icons">add_a_photo</i></a>
+						{% endif %}
+					</div>
+				
+				    <div class="header-partner-name">
+				    	{% if userInCouple == true %}
+				    		{{ homePartner.firstName }} & {{ awayPartner.firstName }}
+				    	{% else %}
+				    		{{ partner.firstName }} {{ partner.lastName }}
+				    	{% endif %}
+				    </div>
+				    
+				    {% if homeCouple.coupleId == couple.coupleId %}
+				   
+				    <div class="header-stats">
+				    	{% if homeCouple != null %}
+						<a href="/cc-web/recommended_couples" class="header-stat col s4">
+							<div>
+								<i class="material-icons">recent_actors</i>
+							</div>
+							<span>browse couples</span>
+						</a>
+						{% else %}
+						<a href="/cc-web/profile/update" class="header-stat col s4">
+							<div>
+								<i class="material-icons">edit</i>
+							</div>
+							<span>update profile</span>
+						</a>
+						{% endif %}
+						{% if homeCouple != null %}
+						<a href="/cc-web/matches" class="header-stat col s4">
+							<div>
+								<i class="material-icons">group_add</i>
+							</div>
+							<span>matches</span>
+						</a>
+						{% else %}
+						<a href="/cc-web/couple_up" class="header-stat col s4">
+							<div>
+								<i class="material-icons">group_add</i>
+							</div>
+							<span>couple up</span>
+						{% endif %}
+						<a href="/cc-web/chat" class="header-stat col s4">
+							<div>
+								<i class="material-icons">message</i>
+							</div>
+							<span>messages</span>
+						</a>
+				    </div>
+					{% endif %}
+					{% if homeCouple.coupleId != couple.coupleId %}
+						<div class="away-couple-actions recommended_couple_card" data-coupleid="{{couple.coupleId}}">
+							<input type="hidden" id="nextRecommenedCouple" data-coupleid="{{nextRecommendedCouple}}">
+							<div><a class="btn left recommended_approve" href="#" data-value="approve"><span>Approve</span></a></div>
+							<div><a class="btn right recommended_approve" href="#" data-value="decline"><span>Pass</span></a></div>
+						</div>
+						<script src="js/recommended-couples.js"></script>
+						
+					{% endif %}
+				    
+				</div>
+				
+			</div>
+			
+			<!-- HEADER CONTENT--> 
+			<div class="col s12 m12 l8">
+			
+				<div class="header-content hide-on-med-and-down">
+					<h1>Update your relationship below, {{homePartner.firstName}}</h1>
+				</div>
+			
+			</div>
+			
+			<!-- HEADER CARD -->
+			<div class="col s12 m12 l4 push-l2">
+				<div class="card">
+					<div class="card-title">
+						<i class="material-icons">edit</i>Updating your Couple Profile
+					</div>
+					<div class="card-content">
+						<p>This is your couple profile! You should try and fill out some more information below in order to find the best couple matches.</p>
+					</div>
+					<div class="card-action">
+						<a class="btn light-blue" href="/cc-web/images">Upload Photos</a>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		
+	</div>
+	
+</header>
+  <div class="row profile_actions_container">
+  		<ul class="profile_actions">
+  			{% include "../action_bar/back_to_profile.html" %}
+			{% include "../action_bar/update_profile.html" %}
+  			{% include "../action_bar/update_personality.html" %}
+  			{% include "../action_bar/upload_images.html" %}
+  		</ul>
+  	</div>
+<div id="sheet">
+
+<div class="sheet_content container">
+<div class="row">
+<form id="updateCoupleForm">
+	
+    	    	<div class="row">
+	    	    	<div class="col s12 m12 l6">
+	    	    		
+		    	    	<div class="col s12">
+			    	    	<div class="row">
+								{% include 'cards/couple_story.twig.html' %}
+								
+			    	    	</div>
+		    	    		<div class="row">
+								{% include 'cards/couple_details.twig.html' %}
+    	    				</div>
+    	    				<div class="row">
+								{% include "update_couple_location.twig.html" %}
+								<!-- 	Dont put double quotes around couple.location. It will break it -->
+								<input type="hidden" name="location" value={{ couple.location }}>
+    	    				</div>
+		    	    	</div>
+	    	    	
+	    	    	</div>
+	    	    	
+	    	    	<div class="col s12 m12 l6">
+	    	    		<div class="col s12">
+	    	    		
+	    	    		<div class="row">
+								{% include 'cards/couple_categorical.twig.html' %}
+
+		    	    	</div>
+		    	    	<div class="row">
+
+	    	    		</div>
+	    	
+		    	    	</div>
+	    	    	</div>
+    	    	</div>
+    	    	</form>
+</div>
+</div>
+
+</div>
+{% include '../images/upload_profile_pic_modal.twig.html' %}
+{% endblock %}

@@ -1,0 +1,12 @@
+{% set potentialImg = couple.profilePictures[inputName] %}
+{% set imageIntegrity = potentialImg|length %}
+
+{% if imageIntegrity == 4 %}
+<div class="ccImage card z-depth-1">
+		<img
+			{% set img = couple.profilePictures[inputName] %}
+			src="{{ img.native }}"
+			draggable="true"
+			>
+</div>
+{% endif %}

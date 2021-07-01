@@ -1,0 +1,173 @@
+
+{% extends "../base.twig.html" %}
+
+{% block content %}
+
+<header>
+
+	<div class="container">
+		
+		<div class="row">
+		
+			<div class="col s12 m12 l4">
+			
+				<div class="header-partner-profile">
+				
+					<div class="header-partner-img">
+					{% set img = {'large': '/cc-web/img/avatar.png'} %}
+					{% if homeCouple != null %}
+						{% set img = homeCouple.profilePictures[0] %}
+					{% endif %}	
+						<img id="profilePic" style="background-image: url({{img.large}}); 
+				   		 {% if homeCouple.coupleId != couple.coupleId %}
+				   		 	
+				   		 {% endif %}
+						"> <!--  end img -->
+						{% if homeCouple != null and homeCouple.coupleId == couple.coupleId %}
+						<a class="modal-trigger addProfilePicture btn-floating btn-large waves-effect waves-light light-blue" href="#upload_profile_pic"><i class="material-icons">add_a_photo</i></a>
+						{% endif %}
+					</div>
+				
+				    <div class="header-partner-name">
+				    	{% if userInCouple == true %}
+				    		{{ homePartner.firstName }} & {{ awayPartner.firstName }}
+				    	{% else %}
+				    		{{ partner.firstName }} {{ partner.lastName }}
+				    	{% endif %}
+				    </div>
+				    
+
+				   
+				    <div class="header-stats">
+				    	{% if homeCouple != null %}
+						<a href="/cc-web/recommended_couples" class="header-stat col s4">
+							<div>
+								<i class="material-icons">recent_actors</i>
+							</div>
+							<span>browse couples</span>
+						</a>
+						{% else %}
+						<a href="/cc-web/profile/update" class="header-stat col s4">
+							<div>
+								<i class="material-icons">edit</i>
+							</div>
+							<span>update profile</span>
+						</a>
+						{% endif %}
+						{% if homeCouple != null %}
+						<a href="/cc-web/matches" class="header-stat col s4">
+							<div>
+								<i class="material-icons">group_add</i>
+							</div>
+							<span>matches</span>
+						</a>
+						{% else %}
+						<a href="/cc-web/couple_up" class="header-stat col s4">
+							<div>
+								<i class="material-icons">group_add</i>
+							</div>
+							<span>couple up</span>
+						{% endif %}
+						<a href="/cc-web/chat" class="header-stat col s4">
+							<div>
+								<i class="material-icons">message</i>
+							</div>
+							<span>messages</span>
+						</a>
+				    </div>
+
+				    
+				</div>
+				
+			</div>
+			
+			<!-- HEADER CONTENT--> 
+			<div class="col s12 m12 l8">
+			
+				<div class="header-content hide-on-med-and-down">
+					<h1>This is your photo gallery {{homePartner.firstName}} & {{awayPartner.firstName}}</h1>
+				</div>
+			
+			</div>
+
+			<!-- HEADER CARD -->
+			<div class="col s12 m12 l4 push-l2">
+				<div class="card">
+					<div class="card-title">
+						Photos of {{ homePartner.firstName }} & {{ awayPartner.firstName }}
+					</div>
+					<div class="card-content">
+						<p>You can still upload 4 more photos! Why not upload some more? Try and choose photos that include both of you!</p>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		
+	</div>
+	
+</header>
+  <div class="row profile_actions_container">
+  		<ul class="profile_actions">
+  			{% include "../action_bar/back_to_profile.html" %}
+  			{% include "../action_bar/update_profile.html" %}
+			{% include "../action_bar/update_couple.html" %}
+  			{% include "../action_bar/update_personality.html" %}
+  		</ul>
+  	</div>
+<div id="sheet">
+<div class="sheet_content container">
+<form method="post" enctype="multipart/form-data" class="uploadImagesForm">
+	<div class="row">
+	
+		{% for inputName in inputImgNames %}
+			<div class="col s12 m12 l4">
+				{% include "image.twig.html" %}
+			</div>
+		{% endfor %}
+		
+
+	</div>
+  <div style="text-align: center">
+    <button class="save-couple-images btn light-blue">Save your Images</button>
+  </div>
+</form>
+</div>
+</div>
+{% include "crop_station.twig.html" %}
+<script src="js/cropper.js"></script>
+<script src="js/jquery-cropper.js"></script>
+
+<!-- SORRY FOGARTY!!!! -->
+<style>
+
+.crop_file{
+	display: none;
+}
+
+#crop_station{
+
+	display: none;
+}
+
+
+.image {
+
+}
+
+
+
+.plusButton{
+	font-size: 2.0rem;
+	position: absolute;
+}
+
+
+
+.removeImage {
+	float: right;
+}
+
+</style>
+
+{% endblock %}

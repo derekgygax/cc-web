@@ -1,0 +1,10 @@
+<div id="search">
+	<form id="searchForm">
+	{% for param in searchParams %}
+		{% include "param.twig.html" %}
+	{% endfor %}
+	<div class="card-action">
+	<input class="btn light-blue" type="submit" value="Search"/>
+	</div>
+	</form>
+</div>

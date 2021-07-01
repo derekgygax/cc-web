@@ -1,0 +1,11 @@
+{% if greyOut %}
+<li class="col s3 center-align action_disabled">
+	<i class="material-icons">add_a_photo</i>
+	<span class="hide-on-med-and-down">Upload Photos</span>
+</li>
+{% else %}
+<a href="/images"><li class="col s3 center-align">
+	<i class="material-icons">add_a_photo</i>
+	<span class="hide-on-med-and-down">Upload Photos</span>
+</li></a>
+{% endif %}

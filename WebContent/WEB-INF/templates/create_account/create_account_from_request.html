@@ -1,0 +1,94 @@
+{% extends "../base.twig.html" %}
+
+{% block content %}
+
+<header class="fullPageHeader">
+<div id="resetYourPasswordModal" style="margin:0 auto;">
+	
+	<div class="card">
+<div class="card-title">
+  	<i class="material-icons">account_circle</i>
+
+  	<span>Create your Account!</span>
+</div>
+<div class="card-content">
+<form class="createAccountForm">
+   <div class="row">
+     <div class="input-field col s12">
+       <input id="createAccountemailAddress" name="emailAddress" type="text" value="{{toBeRegisteredEmail}}" {% if toBeRegisteredEmail is defined %} disabled {% endif %} class="validate">
+       <label for="createAccountemailAddress">
+       		Email Address
+       </label>
+       <span class="active helper-text" data-error="" data-success=""></span>  
+     </div>
+   </div>
+   <div class="row">
+     <div class="input-field col s6">
+       <input id="createAccountfirstName" name="firstName" type="text" class="validate">
+       <label for="createAccountfirstName">First Name</label>
+       <span class="active helper-text" data-error="" data-success=""></span>
+       
+     </div>
+     <div class="input-field col s6">
+       <input id="createAccountlastName" name="lastName" type="text" class="validate">
+       <label for="createAccountlastName">Last Name</label>
+       <span class="active helper-text" data-error="" data-success=""></span>
+       
+     </div>
+   </div>
+   <div class="row">
+     <div class="input-field col s6">
+       <input id="createAccountAge" name="age" type="number" class="validate">
+       <label for="createAccountAge">Age</label>
+       <span class="active helper-text" data-error="" data-success=""></span>
+     </div>
+     <div class="input-field col s6">
+		
+		  <div class="input-field col s12">
+		    <select id="gender_select" name="gender" class="validate">
+		      <option value="" disabled selected>Gender?</option>
+		      <option value="Female">Female</option>
+		      <option value="Male">Male</option>
+		      <option value="Identify Other">Identify Other</option>
+		    </select>
+		    <label>What is your gender?</label>
+	       <span class="active helper-text" data-error="" data-success=""></span>
+		  </div>
+	</div>
+   </div>
+   <div class="row">
+     <div class="input-field col s6">
+       <input id="createAccountpassword" name="password" type="password" class="validate">
+       <label for="createAccountpassword">Password</label>
+       <span class="active helper-text" data-error="" data-success=""></span>
+       
+     </div>
+     <div class="input-field col s6">
+       <input id="createAccountpasswordConfirm" name="passwordConfirm" type="password" class="validate">
+       <label for="createAccountpasswordConfirm">Confirm Password</label>
+     </div>
+   </div>
+
+ </div>
+ 
+
+<div class="card-action">
+	{% if token is defined %}
+	 <input type="hidden" id="coupleRequestToken" name="coupleRequestToken" value="{{token}}" />
+	{% endif %}
+   	 <input type="submit" id="createAccountsubmitbutton" class="submit_get_started btn light-blue" value="CREATE ACCOUNT" />
+   	 <a class="helpPageLink" href="/help">Need Help?</a>
+   	 
+   	 <span class="tosLink">By creating an account you agree to our <a href="/policies">privacy policy and terms of use</a></span>
+</div>
+
+ </form>
+</div>
+
+
+</div>
+ </header>
+
+
+<script src="js/createAccount.js"></script>
+{% endblock %}

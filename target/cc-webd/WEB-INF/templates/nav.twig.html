@@ -1,0 +1,99 @@
+<link rel="stylesheet" href="/cc-web/css/base/nav.css" />
+
+<div class="navbar-fixed">
+	<nav>
+		<div class="nav-wrapper row">
+			<a href="/cc-web/"><div class="logo col s2">
+				<div class="logo-text">2COUPLESCONNECT</div>
+			</div></a>
+			
+			{% if homePartner %}
+			<div class="icon_links col s10">
+			<ul class="text_links left hide-on-med-and-down">
+			
+			{% if homeCouple != null or couple.coupleId != null %}
+				{% if homePartner.updatesNeeded %} 
+					{% if "/cc-web/requirements" != webPageOn %}
+					<li><a href="/cc-web/requirements">Complete Requirements</a></li>
+					{% endif %}
+				{% else %}
+					<li><a href="/cc-web/profile">View your Couple</a></li>
+					<li><a href="/cc-web/recommended_couples">Browse Recommended Couples</a></li>
+			        <li><a href="/cc-web/matches">View Matches</a></li>
+			        <li><a href="/cc-web/chat">View Messages</a></li>
+		        {% endif %}
+			 {% else %}
+		        {% if homePartner %}
+			        {% if homePartner.updatesNeeded %} 
+			        	{% if "/cc-web/requirements" != webPageOn %}
+						<li><a href="/cc-web/requirements">Complete Requirements</a></li>
+						{% endif %}
+					{% else %}
+			 		<li><a href="/cc-web/profile">View your Profile</a></li>
+			 		<li><a href="/cc-web/profile">Create a Couple</a></li>
+			 		<li><a href="/cc-web/profile">Update Profile</a></li>
+			 		{% endif %}
+			 	{% else %}
+			 		<li><a href="/cc-web/">Create an Account</a></li>
+			 	{% endif %}
+		    {% endif %}
+		    
+		    
+		      </ul>
+				<ul class="right">
+					{% if homePartner.readyToMingle %}
+			        	<li><a class="modal-trigger" href="#searchModal"><i class="material-icons">search</i></a></li>
+			        	<li id="message_nav"><a href="/cc-web/chat"><i class="material-icons">message</i></a></li>
+			        {% endif %}
+			        <li><a class="dropdown-trigger" data-target="profile_dropdown"><img src="/cc-web/img/avatar.png" width="36px" height="36px" /></a></li>
+			    </ul>
+		    </div>
+		    
+		    <!-- Profile Icon Dropdown -->
+		    <ul id="profile_dropdown" class="dropdown-content">
+		    	{% if homeCouple %}
+		    	<li><a href="/cc-web/profile">View Couple</a></li>
+		    	<li><a href="/cc-web/profile/update">Update Profile</a></li>
+		    	{% else %}
+		    	<li><a href="/cc-web/profile">View Profile</a></li>
+		    	{% endif %}
+		    	{% if homePartner.readyToMingle %}
+		    	<li class="divider" tabindex="-1"></li>
+		    	<li><a href="/cc-web/chat">Messages</a></li>
+		    	<li class="divider" tabindex="-1"></li>
+		    	{% else %}
+		    	<li class="divider" tabindex="-1"></li>
+		    	{% endif %}
+
+			    <li><a href="/cc-web/logout">Logout</a></li>
+			   <li class="divider" tabindex="-1"></li> <!-- this must be there lol -->
+			</ul>
+			{% endif %}
+	  
+		</div>
+	</nav>
+</div>
+<div id="searchModal" class="modal">
+    <div class="modal-title">Search for Couples</div>
+      <form id="searchForm">
+
+    <div class="modal-content row">
+		{% for param in searchParams %}
+			{% set isModal = true %}
+			{% include "search/param.twig.html" %}
+		{% endfor %}
+		
+    </div>
+    <div class="modal-action">
+    	<div class="left">
+     	<button type="submit" class="modal-close waves-effect waves btn light-blue">Search</button>
+    	</div>
+    	<div class="right">
+      	<a href="#!" class="modal-close waves-effect waves btn light-blue">Close</a>
+      	</div>
+    </div>
+    		</form>
+    
+  </div>
+  <script src="/cc-web/js/search.js"></script>
+  

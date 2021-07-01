@@ -1,0 +1,149 @@
+{% extends "../base.twig.html" %}
+
+{% block content %}
+<header>
+
+	<div class="container">
+  	
+  		<div class="row">
+  		
+<div class="col s12 m12 l4">
+			
+				<div class="header-partner-profile">
+				
+					<div class="header-partner-img">
+					{% set img = {'large': '/img/avatar.png'} %}
+					{% if homeCouple != null %}
+						{% set img = homeCouple.profilePictures[0] %}
+					{% endif %}	
+						<img id="profilePic" style="background-image: url({{img.large}});"> <!--  end img -->
+						{% if homeCouple != null and homeCouple.coupleId == couple.coupleId %}
+						<a class="modal-trigger addProfilePicture btn-floating btn-large waves-effect waves-light light-blue" href="#upload_profile_pic"><i class="material-icons">add_a_photo</i></a>
+						{% endif %}
+					</div>
+				
+				    <div class="header-partner-name">
+				    	{% if userInCouple == true %}
+				    		{{ homePartner.firstName }} & {{ awayPartner.firstName }}
+				    	{% else %}
+				    		{{ homePartner.firstName }} {{ homePartner.lastName }}
+				    	{% endif %}
+				    </div>
+				    
+				    {% if not defined(homePartner.updatesNeeded) %}
+				    
+				    <div class="header-stats">
+				    	{% if homeCouple != null %}
+						<a href="/recommended_couples" class="header-stat col s4">
+							<div>
+								<i class="material-icons">recent_actors</i>
+							</div>
+							<span>browse couples</span>
+						</a>
+						{% else %}
+						<a href="/profile/update" class="header-stat col s4">
+							<div>
+								<i class="material-icons">edit</i>
+							</div>
+							<span>update profile</span>
+						</a>
+						{% endif %}
+						{% if homeCouple != null %}
+						<a href="/matches" class="header-stat col s4">
+							<div>
+								<i class="material-icons">group_add</i>
+							</div>
+							<span>matches</span>
+						</a>
+						{% else %}
+						<a href="/couple_up" class="header-stat col s4">
+							<div>
+								<i class="material-icons">group_add</i>
+							</div>
+							<span>couple up</span>
+						{% endif %}
+						{% if homeCouple != null %}
+						<a href="/chat" class="header-stat col s4">
+							<div>
+								<i class="material-icons">message</i>
+							</div>
+							<span>messages</span>
+						</a>
+						{% else %}
+						<a href="/survey" class="header-stat col s4">
+							<div>
+								<i class="material-icons">portrait</i>
+							</div>
+							<span>take survey</span>
+						</a>
+						{% endif %}
+						
+				    </div>
+					{% endif %}
+				    
+				</div>
+				
+			</div>
+  			<!-- HEADER CONTENT--> 
+			<div class="col s12 m12 l8">
+			
+				<div class="header-content hide-on-med-and-down" >
+					<h1>{{ homePartner.firstName }}, please finish these requirements so you can start matching other couples</h1>
+				</div>
+			
+			</div>
+{% if homePartner.updatesNeeded %}
+	{% if homePartner.verifiedEmail == 0 %}
+		{% set stage = 'stage1' %}
+	{% else %}
+	
+		{% if homePartner.updatesNeeded.survey %}
+			{% set stage = 'stage2' %}
+		{% else %}
+			
+			{% if homePartner.updatesNeeded.couple %}
+				{% set stage = 'stage3' %}
+			{% endif %} 
+
+		{% endif %}
+	{% endif %}
+{% endif %}
+			
+			<!-- HEADER CARD -->
+			<div class="col s12 m12 l6 push-l1">
+				<div class="card">
+				<div class="card-title show-on-med-and-down">
+					<i class="material-icons">list_alt</i>Requirements Progress
+				</div>
+				<ul id="requirementsProgressBar">
+					<li class="col s4 {% if stage == 'stage1' %}active{% endif %}">
+						<i class="material-icons">email</i>
+						<span class="hide-on-med-and-down">Verify Email</span>
+					</li>
+					<li class="col s4 {% if stage == 'stage2' %}active{% endif %}">
+						<i class="material-icons">portrait</i>
+						<span class="hide-on-med-and-down">Essential Questions</span>
+					</li>
+					<li class="col s4 {% if stage == 'stage3' %}active{% endif %}">
+						<i class="material-icons">supervisor_account</i>
+						<span class="hide-on-med-and-down">Couple Profile</span>
+					</li>
+				</ul>
+				</div>
+			</div>
+			
+  		
+  		</div>
+  	
+  	</div>
+
+</header>
+<div id="sheet">
+<div id="requirementsContent" class="sheet_content container">
+
+	{% include "content.html" %}
+	
+</div>
+</div>
+{% include "../images/upload_profile_pic_modal.twig.html" %}
+{% endblock %}

@@ -1,0 +1,29 @@
+				<div class="card">
+					<div class="card_title">
+						<span>What's your name?</span>
+						<i class="material-icons">group_add</i>
+					</div>
+					<div class="card-content">
+						<div class="row">
+						<div class="input-field col s12 m12 l5">
+							<input id="firstName" class="updatePartnerfirstName" name="firstName" type="text" value="{{ partner.firstName }}">
+							<label class="inputRequired">First Name:</label>
+							<span class="active helper-text" data-error=""></span>
+							
+						</div>
+			
+						<div class="input-field col s12 m12 l2">
+							<input id="middleName" class="updatePartnermiddleName" name="middleName" type="text" value="{{ partner.middleName }}" placeholder=" ">
+							<label>Middle:</label>
+						</div>
+			
+						<div class="input-field col s12 m12 l5">
+							<input id="lastName" class="updatePartnerlastName" name="lastName" type="text" value="{{ partner.lastName }}">
+							<label class="inputRequired">Last Name:</label>
+							<span class="active helper-text" data-error=""></span>
+							
+						</div>
+						<button type="submit" class="btn light-blue right">Save</button>
+						</div>
+					</div>
+				</div>

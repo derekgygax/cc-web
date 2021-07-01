@@ -1,0 +1,486 @@
+html { height: 100%; }
+body {
+	background: #f5f5f5;
+	height: 100% !important;
+}
+
+h1,h2, .row, .col {
+  padding: 0;
+  margin: 0;
+}
+
+.spacer {
+	display: inline-block;
+	width: 16px;
+}
+
+/* BREAKPOINT CSS */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+	nav {
+		padding-left: 24px;
+		padding-right: 24px;
+	}
+}
+
+/* NAVIGATION CSS */
+nav {
+	font-size: 48px;
+	background: #1565c0;
+	padding-left: 84px;
+	padding-right: 84px;
+	border-bottom: 2px solid #42a5f5;
+}
+
+
+nav li i {
+	text-align: center !important;
+}
+
+nav li a {
+	color: #c6dafc;	
+	text-align: center !important;
+}
+
+nav li a:hover {
+	color: #fff;
+}
+
+nav li a:active {
+	border: none;
+}
+
+/* Improve Brand Styling */
+
+.brand-logo {
+	background: url('/img/brand-logo.png') no-repeat;
+	width: 134px;
+	padding: 0 16px !important;
+	font-weight: bold;
+}
+
+.brand-logo img {
+	margin-top: -12px !important;
+}	
+
+.brand-logo:hover {
+	text-decoration: none;
+
+}
+
+.brand-logo i {
+	font-size: 48px !important;
+}
+
+/* Text Links */
+.text-links {
+	margin-left: 270px !important;
+}
+
+.text-links li { float: left; font-weight: bold; font-size: 1rem; }
+
+/* DROPDOWN CSS */
+#dropdown1 {
+	margin-top: 64px;
+	top: 0px !important;
+}
+
+#dropdown1 a {
+	color: #333;	
+}
+
+#dropdown1 a:hover {
+	color: #03a9f4;	
+	background: #eee;
+}
+
+
+/* END NAVIGATION CSS */
+
+/* Header CSS */
+header {
+  overflow: auto;
+  width: 100%;
+  padding-top: 32px !important;
+  padding-bottom: 32px !important;
+  background: #1565c0;
+}
+
+.header_img {
+	  background: url('/img/rose_bg_darker.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.login_btn {
+	width: 158px;
+	margin: 32px 0;
+	font-weight:bold;
+	text-shadow: none !important;
+}
+
+.login_btn:hover {
+	color: #fff;
+	text-decoration: underline;
+}
+
+.header_content {
+  width: 60%;
+  height: 100%;
+  color: #fff;
+  margin: 0 auto;
+}
+
+.brand {
+	text-align: center;
+  margin-top: 120px;
+  width: 50%;
+    padding-top: 120px;
+text-shadow: 0px 4px 3px rgba(0,0,0,0.9),
+             0px 8px 13px rgba(0,0,0,0.6),
+             0px 18px 23px rgba(0,0,0,0.6);
+}
+
+.app_store {
+	text-align: center;
+	padding-top: 16px;
+}
+
+.app_store img {
+	display: inline-block;
+	border: 1px solid #f5f5f5  ;
+	width: 162px;
+	height: 48px;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.app_store img:hover {
+	border: 1px solid #40c4ff;
+}
+
+.get_started {
+  width: 80%;
+  margin-top: 80px;
+  padding: 24px;
+}
+
+
+h1 {
+  font-size: 48px;
+}
+
+h2 {
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  padding-top: 6px;
+  font-weight: bold;
+}
+
+
+.get_started h1 {
+  font-size: 28px;
+  color: #333;
+  text-align: center;
+  border-bottom: 2px solid #eee;
+  padding: 8px 0;
+}
+
+.submit_get_started {
+  margin: 12px 0;
+}
+
+#howto {
+	clear: both;
+  width: 60%;
+  text-align: center;
+  margin: 0 auto;
+  padding: 32px 0;
+}
+
+#howto h1 {
+  text-transform: uppercase;
+  font-size: 28px;
+  font-weight:bold;
+  margin-bottom: 16px;
+  color: #555;
+}
+
+.steps {
+  display: table;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.steps li {
+  display: table-cell;
+  width: 180px;
+  height: 240px;
+  vertical-align: middle;
+    border-bottom: 2px solid #eee;
+
+}
+
+.steps li:hover {
+  cursor: pointer;
+  color: #2196f3;
+  background: #e1f5fe ;
+  border-bottom: 2px solid #40c4ff;
+}
+
+.steps span {
+  display: block;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.steps i {
+  font-size: 84px;
+}
+
+/* Person Profile */
+.person {
+	padding-left: 240px;
+}
+
+.person_avatar {
+	float: left;
+	width: 180px;
+	height: 180px;
+}
+
+.person_info {
+	display: inline-block;	
+	margin-left: 16px;
+}
+
+.person_name {
+	font-size: 2rem;
+	font-weight: bold;
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+.person_partner {
+	font-size: 1.25rem;
+	font-weight: 600;
+	text-indent: 32px;
+	padding: 0 !important;
+	margin: 8px 0 0 0 !important;
+}
+
+
+.person_updates {
+	text-align: center;
+	padding-top: 16px;
+	color: #c6dafc;
+}
+
+.person-updates i {
+	vertical-align: middle !important;
+	font-size: 48px  !important;
+}
+
+.person_updates a {
+	height: 48px;
+	color: #c6dafc;
+	font-size: 1.5rem;
+	font-weight:normal;
+	text-align: center;
+	display: inline-block;
+	cursor: pointer;
+	padding: 0 16px;
+}
+
+.person_updates a:hover {
+	text-decoration: none;
+	background: #fff;
+}
+
+.person_updates a:hover .person_updates a label {
+	font-weight: bold;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.person_updates a label {
+	display: block;
+	font-size: 1rem;
+	text-align: center;
+	color: #c6dafc;
+	font-weight: normal;
+	margin: 0;
+}
+
+
+.person img {
+}
+
+/* END PERSON PROFILE */
+
+
+/* SHEET */
+.sheet h1 {
+	font-size: 24px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.sheet {
+	position: relative;
+	width: 66%;
+	margin: 0 auto;
+	background: #f5f5f5;
+	height: 100%;
+}
+
+.sheet .left {
+	width: 420px;
+	
+}
+
+.sheet_header {
+	width: 100%;
+	padding: 12px 48px;
+	text-transform: uppercase;
+	border-bottom: 2px solid #01579b;
+	margin-bottom: 16px;
+}
+
+.sheet_header h1 { font-size: 2rem; }
+
+.sheet_content {
+	background: #f5f5f5;
+	width: 100%;
+}
+
+.partner_info {
+	position: absolute;
+	top: -160px;
+}
+
+/* END SHEET */
+
+/* COUPLE CSS */
+
+.couple_approve {
+	left: 32px !important;
+}
+
+.couple_disapprove {
+	
+}
+
+/* PARTNER */
+
+/* Top Half of the UpdatePartner Profile View */
+.returnButton {
+	display: none !important;
+	visibility: hidden !important;
+}
+
+
+#updatePartner {
+	padding: 16px;
+}
+
+.updatePartnerContainer {
+	max-width: 480px;
+	position: absolute;
+	top: -160px;
+}
+
+.updatePartnerContainer .col {
+	padding: 0;
+}
+
+.partner_avatar {
+	padding: 16px;
+	border-bottom: 2px solid #eee;
+}
+	
+	.partner_image {
+		position: relative;
+		height: 180px;
+		width: 180px;
+		top: 0;
+		left: 0;
+		padding: 16px;
+	}
+	
+	.partner_add_image {
+		font-size: 24px !important;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+	}
+	
+	.partner_image1 {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	
+	.partner_image2 {
+		position: absolute;
+		bottom: 0px;
+		left: 120px;
+		border-radius: 32px;
+
+	}
+	
+	.partner_image2:hover {
+		cursor: pointer;
+	}
+	
+	.partner_desc {
+
+	}
+		
+		.partner_title {
+			text-align: left;
+		}
+		
+		.partner_name {
+			display: block;
+			font-size: 28px;
+			padding-bottom: 4px;
+			border-bottom: 2px solid #eee;	
+		}
+		
+		.partner_asl { text-align: right; }
+		
+	.partner_action {
+		margin-top: 12px !important;
+	}
+	
+	.partner_action .btn {
+	
+		margin-bottom: 12px;
+		font-weight: bold;
+	}
+			
+
+.partner_personality {
+	margin-left: 480px;
+	background: #fff;
+}	
+
+#updatePartner .input-field {
+	margin: 8px 0;
+}
+
+
+/* END COUPLE */
+
+.container { clear: both; }
+
+.show_select {
+	display: block !important;
+}

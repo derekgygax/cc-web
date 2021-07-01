@@ -1,0 +1,84 @@
+{% extends "../base.twig.html" %}
+
+{% block content %}
+<div class="marquee">
+	Chat other couples to enter for a chance to win! One random couple will win a $300 dinner, another will win a $200 dinner! Contest ends 02/07/19
+</div>
+<header>
+
+	<div class="container">
+		
+		<div class="row">
+		
+			<!-- PARTNER PROFILE -->
+			<!-- 
+			<div class="col s12">
+			<div class="header-partner-profile">
+				<div class="header-partner-img">
+					<img src="/img/avatar.png">
+				</div>
+			    <div class="header-partner-name">
+			    	Lori Soft
+			    </div>
+			</div>
+			</div>
+			-->
+			<!-- COUPLE PROFILE -->
+			<div class="header-index col s12 no-padding">
+			<div class="col s12 m12 l5">
+				<div class="branding">
+					<div>2CouplesConnect</div>
+					<span class="branding-tag-line">
+						Real Friends, Real Fast
+					</span>
+						<div class="social-media-icons right">
+							<a class="kofi" href="{{ links.kofi }}" target="_blank"><span class="kofibadge"><span class="kofitext">Support us on Kofi</span><img src="https://ko-fi.com/img/cuplogo.svg" class="kofiimg"></span></a>
+							<a href="https://www.facebook.com/2CouplesConnect-231260174216415/" target="_blank"><img src="/img/fb.png" alt="2CouplesConnect Facebook" /></a>
+							<a href="https://www.instagram.com/2couplesconnect/" target="_blank"><img src="/img/ig.png" alt="2CouplesConnect Instagram" /></a>
+						</div>
+				</div>
+				<div style="clear:both;"></div>
+				<div class="card">
+
+					<div class="card-content branding-description">
+
+					In <span>2COUPLESCONNECT</span> we want to help couples going through new chapters in their life (moving homes, getting married, having kids) not have to go through it on their own.
+When it is getting harder and harder to relate with current friends or just to make even more friends, sign up for 2CouplesConnect! <br /><br /> We help you find new couple friends that you can say are not your friends, not his/her friends but our friends. Friends that makes bonding with friends' time and bonding with your significant other time the same time.
+NOT a swinger site. We just want to find you couples to hang out with that are on the same page as both of you.
+					</div>
+				</div>
+									{% include '../login/login.twig.html' %}
+				
+			</div>
+
+			<!-- HEADER CARD -->
+			<div class="col s12 m12 l6 push-xl1">
+				<!-- <div class="row">
+					<div class="promoCard bcard">
+						<img class="responsive-img" src="/img/contest.png" />
+					</div>
+				</div> -->
+					{% include '../create_account/create_account.twig.html' %}
+			</div>
+			</div>
+		</div>
+		
+	</div>
+	
+</header>
+	<div id="sheet">
+	<div class="sheet_content container">
+		{% include 'howto.twig.html' %}
+		
+		<!--<div class="fancy-border"></div>
+		 bob didnt want the videos anymore
+		{ include 'more.twig.html' } -->
+		<br /><br />
+	</div>
+			
+</div>
+
+<!-- This is a silly way so we can ask the users off the very beginning to let us use their location -->
+<script src="js/createAccount.js"></script>
+
+{% endblock %}

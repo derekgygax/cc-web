@@ -1,0 +1,49 @@
+<form id="updateCoupleForm">
+	{% if coupleRequirements.location %}
+		{% include "../../update_couple/update_couple_location.twig.html" %}
+	{% endif %}
+
+<!-- 	Dont put double quotes around couple.location. It will break it -->
+	<input type="hidden" name="location" value={{ homeCouple.hashMap.location }}>
+   	<div class="row">
+   	    <div class="col s12 m12 l6">
+    	    <div class="col s12">
+    	    	<div class="row">
+					{% if coupleRequirements.story %}
+						{% include 'story.html' %}
+					{% else %}
+						<textarea 
+							class="couplesStoryTextArea"
+							data-location={{homeCouple.hashMap.location}}
+							name="story"
+							style="display:none;">{{ homeCouple.story }}</textarea>
+					{% endif %}
+    	    	</div>
+    	    	<div class="row" style="display:none;">
+					{% include "details.html" %}
+    	    	</div>
+    	    </div>
+   	    </div>
+    	{% if coupleRequirements.categoricalQuestions %}
+    		{% if coupleRequirements.story %}
+	    	<div class="col s12 m12 l6">
+	    	    <div class="col s12">
+	   	    		<div class="row">
+						{% include "categorical_questions_wrapper.html" %}
+	    	    	</div>
+				</div>
+			</div>
+			{% else %}
+			<div class="col s12 m12 l12">
+	    	    <div class="col s12">
+	   	    		<div class="row">
+						{% include "categorical_questions_wrapper.html" %}
+	    	    	</div>
+				</div>
+			</div>
+			{% endif %}
+    	{% else %}
+    		{% include 'categorical_questions_looper.html' %}
+    	{% endif %}
+	</div>
+</form>
